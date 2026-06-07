@@ -100,16 +100,16 @@ class ResCurrencyRateProviderBOT(models.Model):
         return unit
 
     def _update_content_currency_update(
-        self, bot_currency, content, result, date_from, date_to
+        self, bot_currency, content, result, date_from, date_to, rate_type=None
     ):
         data = result["data"]
         last_updated = data["data_header"]["last_updated"]
         date_last_update = datetime.datetime.strptime(last_updated, "%Y-%m-%d").date()
         if date_from > date_last_update and date_to > date_last_update:
             raise UserError(self.env._(f"BOT Last Updated: {last_updated}"))
-        data_details = data["data_detail"]
+        effective_rate_type = rate_type or bot_currency.bot_currency_rate_type
         unit = self._get_currency_unit(bot_currency.bot_currency_name)
-        for data_detail in data_details:
+        for data_detail in data["data_detail"]:
             period = (
                 fields.Date.from_string(data_detail["period"]).strftime(
                     DEFAULT_SERVER_DATE_FORMAT
@@ -117,16 +117,14 @@ class ResCurrencyRateProviderBOT(models.Model):
                 if data_detail["period"]
                 else False
             )
-            if period:
-                if period in content.keys():
-                    content[period][bot_currency.name] = unit / float(
-                        data_detail[bot_currency.bot_currency_rate_type]
-                    )
-                else:
-                    content[period] = {
-                        bot_currency.name: unit
-                        / float(data_detail[bot_currency.bot_currency_rate_type])
-                    }
+            rate_value = data_detail.get(effective_rate_type)
+            if not period or not rate_value:
+                continue
+            rate = unit / float(rate_value)
+            if period in content:
+                content[period][bot_currency.name] = rate
+            else:
+                content[period] = {bot_currency.name: rate}
 
     def _obtain_rates(self, base_currency, currencies, date_from, date_to):
         self.ensure_one()
@@ -158,6 +156,7 @@ class ResCurrencyRateProviderBOT(models.Model):
             bot_currencies = self.env["res.currency"].search(
                 [("name", "in", currencies)]
             )
+            global_rate_type = self.company_id.bot_rate_type or None
             content = dict()
             for bot_currency in bot_currencies:
                 currency = bot_currency.bot_currency_name
@@ -175,7 +174,26 @@ class ResCurrencyRateProviderBOT(models.Model):
                         )
                     )
                 self._update_content_currency_update(
-                    bot_currency, content, result, date_from, date_to
+                    bot_currency, content, result, date_from, date_to,
+                    rate_type=global_rate_type,
                 )
+                # Fallback: if no rate added (e.g. weekend/holiday), retry with last_updated date
+                if not any(bot_currency.name in d for d in content.values()):
+                    last_updated_str = result["data"]["data_header"]["last_updated"]
+                    last_updated_date = datetime.datetime.strptime(
+                        last_updated_str, "%Y-%m-%d"
+                    ).date()
+                    fallback_url = (
+                        f"{hostname}{route_BOT}/?start_period={last_updated_str}"
+                        f"&end_period={last_updated_str}&currency={currency}"
+                    )
+                    fb_response = requests.get(fallback_url, headers=headers, timeout=15)
+                    fb_result = fb_response.json().get("result", False)
+                    if fb_result:
+                        self._update_content_currency_update(
+                            bot_currency, content, fb_result,
+                            last_updated_date, last_updated_date,
+                            rate_type=global_rate_type,
+                        )
             return content
         return super()._obtain_rates(base_currency, currencies, date_from, date_to)
