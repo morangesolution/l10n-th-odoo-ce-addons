@@ -3,7 +3,7 @@
 
 {
     "name": "Currency Rate Update - BOT",
-    "version": "18.0.1.1.0",
+    "version": "18.0.1.2.0",
     "author": "Ecosoft, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/l10n-thailand",
     "license": "AGPL-3",
@@ -13,6 +13,7 @@
     ],
     "data": [
         "data/config_parameter.xml",
+        "data/res_currency_rate_provider.xml",
         "views/res_currency_views.xml",
         "views/res_config_settings.xml",
         "views/res_currency_rate_provider.xml",

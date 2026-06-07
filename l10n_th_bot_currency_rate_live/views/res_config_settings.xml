@@ -26,6 +26,15 @@
                             <field name="bot_rate_type" />
                         </div>
                     </div>
+                    <div class="mt8">
+                        <button
+                            type="action"
+                            name="%(currency_rate_update.action_res_currency_rate_provider)d"
+                            string="Currency Rate Providers"
+                            class="btn-link"
+                            icon="oi-arrow-right"
+                        />
+                    </div>
                 </setting>
             </xpath>
         </field>
