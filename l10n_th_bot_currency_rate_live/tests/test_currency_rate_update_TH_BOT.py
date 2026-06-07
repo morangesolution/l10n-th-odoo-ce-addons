@@ -127,11 +127,16 @@ class TestResCurrencyRateProviderBOT(TransactionCase):
             },
         }
         date = datetime.datetime.strptime("2023-09-19", "%Y-%m-%d").date()
-        # Test with content there is no value
+        # Test with empty content — should populate mid_rate by default
+        content = {}
         self.bot_provider._update_content_currency_update(
-            self.eur_currency, {}, result_demo, date, date
+            self.eur_currency, content, result_demo, date, date
         )
-        # Test with content there is value
+        self.assertIn("2023-09-19", content)
+        self.assertAlmostEqual(
+            content["2023-09-19"][self.eur_currency.name], 1.0 / 35.8186, places=5
+        )
+        # Test merging into existing content
         self.bot_provider._update_content_currency_update(
             self.eur_currency,
             {"2023-09-19": {"USD": 0.027918455774374205}},
@@ -145,3 +150,42 @@ class TestResCurrencyRateProviderBOT(TransactionCase):
             self.bot_provider._update_content_currency_update(
                 self.eur_currency, {}, result_demo, date, date
             )
+
+    def test_06_global_rate_type_override(self):
+        """Global bot_rate_type on company overrides per-currency setting"""
+        result_demo = {
+            "data": {
+                "data_header": {"last_updated": "2023-09-19"},
+                "data_detail": [
+                    {
+                        "period": "2023-09-19",
+                        "buying_sight": "35.5795000",
+                        "buying_transfer": "35.6563000",
+                        "selling": "35.9808000",
+                        "mid_rate": "35.8186000",
+                    }
+                ],
+            }
+        }
+        date = datetime.datetime.strptime("2023-09-19", "%Y-%m-%d").date()
+
+        # Global buying_transfer overrides per-currency mid_rate
+        content = {}
+        self.bot_provider._update_content_currency_update(
+            self.eur_currency, content, result_demo, date, date,
+            rate_type="buying_transfer",
+        )
+        self.assertAlmostEqual(
+            content["2023-09-19"][self.eur_currency.name], 1.0 / 35.6563, places=5
+        )
+
+        # Per-currency selling used when global rate_type is False
+        self.eur_currency.bot_currency_rate_type = "selling"
+        content = {}
+        self.bot_provider._update_content_currency_update(
+            self.eur_currency, content, result_demo, date, date,
+            rate_type=False,
+        )
+        self.assertAlmostEqual(
+            content["2023-09-19"][self.eur_currency.name], 1.0 / 35.9808, places=5
+        )

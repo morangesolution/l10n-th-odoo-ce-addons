@@ -3,12 +3,7 @@
 
 from odoo import fields, models
 
-CURRENCY_RATE_TYPE = [
-    ("mid_rate", "Mid Rate"),
-    ("selling", "Selling Rate"),
-    ("buying_sight", "Buying Sight Rate"),
-    ("buying_transfer", "Buying Transfer Rate"),
-]
+from .res_currency import CURRENCY_RATE_TYPE
 
 
 class ResCompany(models.Model):
