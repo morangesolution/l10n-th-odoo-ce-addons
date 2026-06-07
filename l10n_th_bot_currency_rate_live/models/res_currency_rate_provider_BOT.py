@@ -88,16 +88,7 @@ class ResCurrencyRateProviderBOT(models.Model):
         ]
 
     def _get_currency_unit(self, bot_currency_name):
-        """
-        Returns the currency unit used to normalize the exchange rate to 1 unit.
-
-        For example, if the exchange rate is provided as 100 JPY, this method returns
-        100.0, so that the rate can be converted to a per-1 JPY basis.
-        """
-        unit = 1.0
-        if bot_currency_name == "JPY":
-            unit = 100.0
-        return unit
+        return 100.0 if bot_currency_name == "JPY" else 1.0
 
     def _update_content_currency_update(
         self, bot_currency, content, result, date_from, date_to, rate_type=None
@@ -156,21 +147,22 @@ class ResCurrencyRateProviderBOT(models.Model):
             bot_currencies = self.env["res.currency"].search(
                 [("name", "in", currencies)]
             )
-            global_rate_type = self.company_id.bot_rate_type or None
-            content = dict()
+            global_rate_type = self.company_id.bot_rate_type
+            content = {}
             for bot_currency in bot_currencies:
                 currency = bot_currency.bot_currency_name
                 url = f"{default_url}&currency={currency}"
-                response = requests.get(url, headers=headers, timeout=15)
-                data_dict = response.json()
+                try:
+                    response = requests.get(url, headers=headers, timeout=15)
+                    data_dict = response.json()
+                except Exception as e:
+                    raise UserError(self.env._(f"BOT API request failed: {e}")) from e
                 result = data_dict.get("result", False)
                 if not result:
-                    http_code = data_dict.get("httpCode", False)
-                    more_information = data_dict.get("moreInformation", False)
                     raise UserError(
                         self.env._(
-                            f"httpCode: {http_code}\n"
-                            f"moreInformation: {more_information}"
+                            f"httpCode: {data_dict.get('httpCode')}\n"
+                            f"moreInformation: {data_dict.get('moreInformation')}"
                         )
                     )
                 self._update_content_currency_update(
@@ -187,8 +179,11 @@ class ResCurrencyRateProviderBOT(models.Model):
                         f"{hostname}{route_BOT}/?start_period={last_updated_str}"
                         f"&end_period={last_updated_str}&currency={currency}"
                     )
-                    fb_response = requests.get(fallback_url, headers=headers, timeout=15)
-                    fb_result = fb_response.json().get("result", False)
+                    try:
+                        fb_response = requests.get(fallback_url, headers=headers, timeout=15)
+                        fb_result = fb_response.json().get("result", False)
+                    except Exception:
+                        fb_result = False
                     if fb_result:
                         self._update_content_currency_update(
                             bot_currency, content, fb_result,

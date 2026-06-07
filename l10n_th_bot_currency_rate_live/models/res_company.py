@@ -16,5 +16,5 @@ class ResCompany(models.Model):
 
     bot_token = fields.Char(string="BOT Token")
     bot_rate_type = fields.Selection(
-        CURRENCY_RATE_TYPE, string="BOT Rate Type", default="mid_rate"
+        CURRENCY_RATE_TYPE, string="BOT Rate Type"
     )
