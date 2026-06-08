@@ -62,7 +62,7 @@ class AccountTrialBalance(models.TransientModel):
                 sum(initial_move_line_ids.mapped('credit')), 2)
 
             # Calculate NET initial balance
-            initial_diff = initial_total_debit_raw - initial_total_credit_raw
+            initial_diff = round(initial_total_debit_raw - initial_total_credit_raw, 2)
             if initial_diff > 0:
                 initial_total_debit = initial_diff
                 initial_total_credit = 0.0
@@ -79,7 +79,7 @@ class AccountTrialBalance(models.TransientModel):
             total_credit = round(sum(move_line_ids.mapped('credit')), 2)
             sum_debit = initial_total_debit + total_debit
             sum_credit = initial_total_credit + total_credit
-            diff_credit_debit = sum_debit - sum_credit
+            diff_credit_debit = round(sum_debit - sum_credit, 2)
             if diff_credit_debit > 0:
                 end_total_debit = diff_credit_debit
                 end_total_credit = 0.0
@@ -189,7 +189,7 @@ class AccountTrialBalance(models.TransientModel):
                 sum(initial_move_line_ids.mapped('credit')), 2)
 
             # Calculate NET initial balance
-            initial_diff = initial_total_debit_raw - initial_total_credit_raw
+            initial_diff = round(initial_total_debit_raw - initial_total_credit_raw, 2)
             if initial_diff > 0:
                 initial_total_debit = initial_diff
                 initial_total_credit = 0.0
@@ -307,7 +307,7 @@ class AccountTrialBalance(models.TransientModel):
                 dynamic_total_debit.values()) + total_debit
             sum_credit = initial_total_credit + sum(
                 dynamic_total_credit.values()) + total_credit
-            diff_credit_debit = sum_debit - sum_credit
+            diff_credit_debit = round(sum_debit - sum_credit, 2)
             if diff_credit_debit > 0:
                 end_total_debit = diff_credit_debit
                 end_total_credit = 0.0

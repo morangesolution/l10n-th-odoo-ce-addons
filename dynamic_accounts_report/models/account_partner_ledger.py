@@ -69,7 +69,7 @@ class AccountPartnerLedger(models.TransientModel):
                     if move_line.invoice_date < fiscal_year_start:
                         total_debit_balance += move_line.debit
                         total_credit_balance += move_line.credit
-                        balance = total_debit_balance - total_credit_balance
+                        balance = round(total_debit_balance - total_credit_balance, 2)
                 move_line_data = move_line.read(
                     ['date', 'move_name', 'account_type', 'debit', 'credit',
                      'date_maturity', 'account_id', 'journal_id', 'move_id',
@@ -346,7 +346,7 @@ class AccountPartnerLedger(models.TransientModel):
                     if remaining_move.invoice_date < date_start:
                         total_debit_balance += remaining_move.debit
                         total_credit_balance += remaining_move.credit
-                        balance = total_debit_balance - total_credit_balance
+                        balance = round(total_debit_balance - total_credit_balance, 2)
             partner_dict[partner] = move_line_list
             currency_id = self.env.company.currency_id.symbol
             partner_totals[partner] = {

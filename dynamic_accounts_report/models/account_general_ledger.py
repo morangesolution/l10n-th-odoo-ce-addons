@@ -324,8 +324,8 @@ class AccountGeneralLedger(models.TransientModel):
                                       data['grand_total']['total_credit_display'],
                                       filter_head)
                     sheet.merge_range(row, col + 11, row, col + 12,
-                                      float(data['grand_total']['total_debit']) -
-                                      float(data['grand_total']['total_credit']),
+                                      round(float(data['grand_total']['total_debit']) -
+                                            float(data['grand_total']['total_credit']), 2),
                                       filter_head)
         workbook.close()
         output.seek(0)

@@ -274,8 +274,8 @@ class BankBookReport(models.TransientModel):
                                       data['total'][move_line]['total_credit_display'],
                                       txt_name)
                     sheet.merge_range(row, col + 15, row, col + 16,
-                                      data['total'][move_line]['total_debit'] -
-                                      data['total'][move_line]['total_credit'],
+                                      round(data['total'][move_line]['total_debit'] -
+                                            data['total'][move_line]['total_credit'], 2),
                                       txt_name)
                     for rec in data['data'][move_line]:
                         row += 1
@@ -312,8 +312,8 @@ class BankBookReport(models.TransientModel):
                                   data['grand_total']['total_credit_display'],
                                   filter_head)
                 sheet.merge_range(row + 1, col + 15, row + 1, col + 16,
-                                  float(data['grand_total']['total_debit']) -
-                                  float(data['grand_total']['total_credit']),
+                                  round(float(data['grand_total']['total_debit']) -
+                                        float(data['grand_total']['total_credit']), 2),
                                   filter_head)
         workbook.close()
         output.seek(0)
