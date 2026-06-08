@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="th_wht_report">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-set="data_report_margin_top" t-value="12"/>
+                <t t-set="data_report_header_spacing" t-value="9"/>
+                <div class="page">
+                    <t t-set="filters" t-value="data.get('filters', {})"/>
+                    <t t-set="pnd_label" t-value="(filters.get('income_tax_form') or 'All').upper()"/>
+                    <h3 class="text-center">
+                        <b><t t-esc="data.get('title', 'Thai WHT Report')"/></b>
+                    </h3>
+                    <div class="row mb-2" style="font-size:11px;">
+                        <div class="col-6">
+                            <strong>Period:</strong>
+                            <t t-esc="filters.get('start_date', '')"/> to
+                            <t t-esc="filters.get('end_date', '')"/>
+                        </div>
+                        <div class="col-6">
+                            <strong>PND Form:</strong> <t t-esc="pnd_label"/>
+                        </div>
+                    </div>
+                    <table class="table table-sm table-bordered" style="font-size:0.78em;">
+                        <thead style="background:#D3D3D3;">
+                            <tr>
+                                <th class="text-center">No.</th>
+                                <th>Cert Date</th>
+                                <th>Cert No.</th>
+                                <th>Vendor</th>
+                                <th>Tax ID</th>
+                                <th>Income Type</th>
+                                <th class="text-right">% Tax</th>
+                                <th class="text-right">Base Amount</th>
+                                <th class="text-right">WHT Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody style="font-size:10px;font-weight:100;">
+                            <t t-foreach="data.get('lines', [])" t-as="line">
+                                <tr t-att-style="'color:#999;' if line.get('is_cancelled') else ''">
+                                    <td class="text-center"><t t-esc="line.get('no')"/></td>
+                                    <td><t t-esc="line.get('cert_date')"/></td>
+                                    <td><t t-esc="line.get('cert_number')"/></td>
+                                    <td><t t-esc="line.get('partner_name')"/></td>
+                                    <td><t t-esc="line.get('partner_vat')"/></td>
+                                    <td><t t-esc="line.get('income_type')"/></td>
+                                    <td class="text-right">
+                                        <t t-esc="'{:.2f}'.format(line.get('percent', 0))"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <t t-esc="'{:,.2f}'.format(line.get('base_amount', 0))"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <t t-esc="'{:,.2f}'.format(line.get('wht_amount', 0))"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                        <tfoot>
+                            <tr style="font-weight:bold;background-color:#f8f9fa;">
+                                <td colspan="7" class="text-right">Total</td>
+                                <td class="text-right">
+                                    <t t-esc="'{:,.2f}'.format(data.get('total_base', 0))"/>
+                                </td>
+                                <td class="text-right">
+                                    <t t-esc="'{:,.2f}'.format(data.get('total_wht', 0))"/>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_print_th_wht_report" model="ir.actions.report">
+        <field name="name">Thai WHT Report</field>
+        <field name="model">th.wht.report</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">l10n_th_dynamic_accounts_report.th_wht_report</field>
+        <field name="report_file">l10n_th_dynamic_accounts_report.th_wht_report</field>
+    </record>
+</odoo>

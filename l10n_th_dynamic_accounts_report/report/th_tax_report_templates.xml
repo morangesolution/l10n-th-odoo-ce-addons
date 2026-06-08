@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="th_tax_report">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-set="data_report_margin_top" t-value="12"/>
+                <t t-set="data_report_header_spacing" t-value="9"/>
+                <div class="page">
+                    <t t-set="filters" t-value="data.get('filters', {})"/>
+                    <t t-set="tax_type_label" t-value="'Sale VAT' if filters.get('tax_type') == 'sale' else 'Purchase VAT'"/>
+                    <h3 class="text-center">
+                        <b><t t-esc="data.get('title', 'Thai VAT Report')"/></b>
+                    </h3>
+                    <div class="row mb-2" style="font-size:11px;">
+                        <div class="col-6">
+                            <strong>Period:</strong>
+                            <t t-esc="filters.get('start_date', '')"/> to
+                            <t t-esc="filters.get('end_date', '')"/>
+                        </div>
+                        <div class="col-6">
+                            <strong>Type:</strong> <t t-esc="tax_type_label"/>
+                        </div>
+                    </div>
+                    <table class="table table-sm table-bordered" style="font-size:0.82em;">
+                        <thead style="background:#D3D3D3;">
+                            <tr>
+                                <th class="text-center">No.</th>
+                                <th>Date</th>
+                                <th>Tax Inv. No.</th>
+                                <th>Partner</th>
+                                <th>Tax ID</th>
+                                <th>Branch</th>
+                                <th class="text-right">Base Amount</th>
+                                <th class="text-right">Tax Amount</th>
+                                <th>Ref</th>
+                            </tr>
+                        </thead>
+                        <tbody style="font-size:10px;font-weight:100;">
+                            <t t-foreach="data.get('lines', [])" t-as="line">
+                                <tr t-att-style="'color:#999;' if '(VOID)' in (line.get('tax_invoice_number') or '') else ''">
+                                    <td class="text-center"><t t-esc="line.get('no')"/></td>
+                                    <td><t t-esc="line.get('tax_date')"/></td>
+                                    <td><t t-esc="line.get('tax_invoice_number')"/></td>
+                                    <td><t t-esc="line.get('partner_name')"/></td>
+                                    <td><t t-esc="line.get('partner_vat')"/></td>
+                                    <td><t t-esc="line.get('partner_branch')"/></td>
+                                    <td class="text-right">
+                                        <t t-esc="'{:,.2f}'.format(line.get('base_amount', 0))"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <t t-esc="'{:,.2f}'.format(line.get('tax_amount', 0))"/>
+                                    </td>
+                                    <td><t t-esc="line.get('doc_ref')"/></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                        <tfoot>
+                            <tr style="font-weight:bold;background-color:#f8f9fa;">
+                                <td colspan="6" class="text-right">Total</td>
+                                <td class="text-right">
+                                    <t t-esc="'{:,.2f}'.format(data.get('total_base', 0))"/>
+                                </td>
+                                <td class="text-right">
+                                    <t t-esc="'{:,.2f}'.format(data.get('total_tax', 0))"/>
+                                </td>
+                                <td/>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_print_th_tax_report" model="ir.actions.report">
+        <field name="name">Thai VAT Report</field>
+        <field name="model">th.tax.report</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">l10n_th_dynamic_accounts_report.th_tax_report</field>
+        <field name="report_file">l10n_th_dynamic_accounts_report.th_tax_report</field>
+    </record>
+</odoo>
