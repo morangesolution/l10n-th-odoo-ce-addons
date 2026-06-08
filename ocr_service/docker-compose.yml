@@ -1,0 +1,22 @@
+services:
+  ocr-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ocr-service
+    restart: always
+    ports:
+      - "8001:8001"
+    environment:
+      - LLM_BASE_URL=${LLM_BASE_URL:-https://api.openai.com/v1}
+      - LLM_API_KEY=${LLM_API_KEY}
+      - LLM_MODEL=${LLM_MODEL:-gpt-4o}
+      - LLM_VISION_MODEL=${LLM_VISION_MODEL:-gpt-4o}
+      - OCR_TIMEOUT=${OCR_TIMEOUT:-30}
+      - SCANNED_TEXT_THRESHOLD=${SCANNED_TEXT_THRESHOLD:-50}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
