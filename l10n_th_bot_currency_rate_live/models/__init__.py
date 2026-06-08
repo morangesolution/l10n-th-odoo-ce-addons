@@ -4,3 +4,4 @@ from . import res_currency
 from . import res_company
 from . import res_config_settings
 from . import res_currency_rate_provider_BOT
+from . import account_move

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_move_form_bot_currency_rate" model="ir.ui.view">
+        <field name="name">account.move.form.bot.currency.rate</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <!-- Show inverted rate: 1 USD = 35.82 THB instead of 1 THB = 0.028 USD -->
+            <xpath expr="//div[@name='currency_conversion_div']/field[@name='company_currency_id']" position="replace">
+                <field name="currency_id" readonly="True" options="{'no_open': True}" class="w-auto"/>
+            </xpath>
+            <xpath expr="//div[@name='currency_conversion_div']/field[@name='invoice_currency_rate']" position="replace">
+                <field name="invoice_currency_rate_inverted" digits="[12,6]" readonly="state != 'draft'"/>
+            </xpath>
+            <xpath expr="//div[@name='currency_conversion_div']/field[@name='currency_id']" position="replace">
+                <field name="company_currency_id" readonly="True" options="{'no_open': True}" class="w-auto"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
