@@ -164,7 +164,7 @@ class AccountMove(models.Model):
             if not account:
                 account = self.env["account.account"].sudo().search(
                     [
-                        ("company_id", "=", company.id),
+                        ("company_ids", "in", [company.id]),
                         ("account_type", "=", "expense"),
                         ("deprecated", "=", False),
                     ],
