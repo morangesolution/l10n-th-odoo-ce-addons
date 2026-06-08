@@ -272,6 +272,12 @@
                                            t-as="account"
                                            t-key="account_index">
                                             <t t-set="i" t-value="i + 1"/>
+                                            <tr t-if="state.account_data.account_totals[account]['is_group_start'] and state.account_data.account_totals[account]['group_name']"
+                                                style="background-color:#e9ecef;">
+                                                <th colspan="100" style="padding:4px 8px;font-weight:bold;font-size:0.85em;">
+                                                    <t t-esc="state.account_data.account_totals[account]['group_name']"/>
+                                                </th>
+                                            </tr>
                                             <tr class="border-bottom border-dark border-gainsboro">
                                                 <th>
                                                     <div data-bs-toggle="collapse"

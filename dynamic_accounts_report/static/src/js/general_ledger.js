@@ -88,6 +88,7 @@ class GeneralLedger extends owl.Component {
                     });
                 }
             }
+            this._addGroupMarkers(account_totals);
             self.state.account = account_list
             self.state.account_list = account_list
             self.state.account_data_list = self.state.account_data
@@ -102,6 +103,14 @@ class GeneralLedger extends owl.Component {
         }
         catch (el) {
             window.location.href;
+        }
+    }
+    _addGroupMarkers(account_totals) {
+        let prevGroup = null;
+        for (const key of Object.keys(account_totals || {})) {
+            const entry = account_totals[key];
+            entry.is_group_start = entry.group_name !== prevGroup;
+            prevGroup = entry.group_name || null;
         }
     }
     async printPdf(ev) {

@@ -62,6 +62,7 @@ class TrialBalance extends owl.Component {
             var endOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
             let result = await self.orm.call("account.trial.balance", "view_report", []);
             self.state.data = result[0];
+            self._addGroupMarkers(self.state.data);
             self.state.totals = result[2];
             self.start_date.el.value = startOfMonth.getFullYear() + '-' + String(startOfMonth.getMonth() + 1).padStart(2, '0') + '-' + String(startOfMonth.getDate()).padStart(2, '0');
             self.end_date.el.value = endOfMonth.getFullYear() + '-' + String(endOfMonth.getMonth() + 1).padStart(2, '0') + '-' + String(endOfMonth.getDate()).padStart(2, '0');
@@ -288,6 +289,7 @@ class TrialBalance extends owl.Component {
         this.state.data = await this.orm.call("account.trial.balance", "get_filter_values", [this.start_date.el.value, this.end_date.el.value, this.state.comparison_number, this.state.comparison_type, this.state.selected_journal_list, this.state.selected_analytic, this.state.options,this.state.method,]);
         this.state.totals = this.state.data[1];
         this.state.data = this.state.data[0];
+        this._addGroupMarkers(this.state.data);
         var date_viewed = []
         if (date_viewed.length !== 0) {
             this.state.date_viewed = date_viewed.reverse()
@@ -312,6 +314,13 @@ class TrialBalance extends owl.Component {
          * @returns {void} No explicit return value.
          */
         this.period.el.value = ev.target.value
+    }
+    _addGroupMarkers(data) {
+        let prevGroup = null;
+        for (const row of (data || [])) {
+            row.is_group_start = row.group_name !== prevGroup;
+            prevGroup = row.group_name || null;
+        }
     }
     applyComparisonPeriod(ev) {
         /**

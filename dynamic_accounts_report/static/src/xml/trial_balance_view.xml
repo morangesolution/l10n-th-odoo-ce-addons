@@ -315,6 +315,12 @@
                                         <t t-if="state.data">
                                             <t t-foreach="state.data" t-as="each" t-key="each.account_id">
                                                 <t t-set="show" t-value="False"/>
+                                                <tr t-if="each.is_group_start and each.group_name"
+                                                    style="background-color:#e9ecef;">
+                                                    <th colspan="100" style="padding:4px 8px;font-weight:bold;font-size:0.85em;">
+                                                        <t t-esc="each.group_name"/>
+                                                    </th>
+                                                </tr>
                                                 <tr class="border-bottom"
                                                     style="border-spacing: 0 10px;">
                                                     <th colspan="6">
@@ -435,6 +441,12 @@
                                                t-as="move_line"
                                                t-key="move_line_index">
                                                 <t t-set="i" t-value="i + 1"/>
+                                                <tr t-if="move_line.is_group_start and move_line.group_name"
+                                                    style="background-color:#e9ecef;">
+                                                    <th colspan="100" style="padding:4px 8px;font-weight:bold;font-size:0.85em;">
+                                                        <t t-esc="move_line.group_name"/>
+                                                    </th>
+                                                </tr>
                                                 <tr class="border-bottom"
                                                     style="border-spacing: 0 10px;">
                                                     <th colspan="6">

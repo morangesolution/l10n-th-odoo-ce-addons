@@ -52,7 +52,7 @@ class AccountGeneralLedger(models.TransientModel):
         account_totals = {}
         move_line_ids = self.env['account.move.line'].search(
             [('parent_state', '=', 'posted')])
-        account_ids = move_line_ids.mapped('account_id')
+        account_ids = move_line_ids.mapped('account_id').sorted('code')
         account_dict['journal_ids'] = self.env['account.journal'].search_read(
             [], ['name'])
         account_dict['analytic_ids'] = self.env[
@@ -74,7 +74,8 @@ class AccountGeneralLedger(models.TransientModel):
                 'total_debit': round(sum(move_line_id.mapped('debit')), 2),
                 'total_credit': round(sum(move_line_id.mapped('credit')), 2),
                 'currency_id': currency_id,
-                'account_id': account.id}
+                'account_id': account.id,
+                'group_name': account.group_id.name or ''}
             account_dict['account_totals'] = account_totals
         return account_dict
 
@@ -171,7 +172,7 @@ class AccountGeneralLedger(models.TransientModel):
                                              '%Y-%m-%d').date()
                 domain += [('date', '<=', end_date)]
         move_line_ids = self.env['account.move.line'].search(domain)
-        account_ids = move_line_ids.mapped('account_id')
+        account_ids = move_line_ids.mapped('account_id').sorted('code')
         account_dict['journal_ids'] = self.env['account.journal'].search_read(
             [], ['name'])
         account_dict['analytic_ids'] = self.env[
@@ -197,7 +198,8 @@ class AccountGeneralLedger(models.TransientModel):
                 'total_credit': total_credit,
                 'total_credit_display': "{:,.2f}".format(total_credit),
                 'currency_id': currency_id,
-                'account_id': account.id}
+                'account_id': account.id,
+                'group_name': account.group_id.name or ''}
             account_dict['account_totals'] = account_totals
         return account_dict
 

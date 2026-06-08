@@ -46,7 +46,7 @@ class AccountTrialBalance(models.TransientModel):
         :rtype: list
         """
         account_ids = self.env['account.move.line'].search([]).mapped(
-            'account_id')
+            'account_id').sorted('code')
         today = fields.Date.today()
         move_line_list = []
         for account_id in account_ids:
@@ -89,6 +89,7 @@ class AccountTrialBalance(models.TransientModel):
             data = {
                 'account': account_id.display_name,
                 'account_id': account_id.id,
+                'group_name': account_id.group_id.name or '',
                 'journal_ids': self.env['account.journal'].search_read([], ['name']),
                 'initial_total_debit': "{:,.2f}".format(initial_total_debit),
                 'initial_total_credit': "{:,.2f}".format(initial_total_credit),
@@ -141,7 +142,7 @@ class AccountTrialBalance(models.TransientModel):
         dynamic_date_num = {}
         dynamic_total_credit = {}
         account_ids = self.env['account.move.line'].search([]).mapped(
-            'account_id')
+            'account_id').sorted('code')
         move_line_list = []
         start_date_first = \
             get_fiscal_year(datetime.strptime(start_date, "%Y-%m-%d").date())[
@@ -317,6 +318,7 @@ class AccountTrialBalance(models.TransientModel):
             data = {
                 'account': account_id.display_name,
                 'account_id': account_id.id,
+                'group_name': account_id.group_id.name or '',
                 'journal_ids': self.env['account.journal'].search_read([], [
                     'name']),
                 'initial_total_debit': initial_total_debit,
