@@ -8,6 +8,8 @@ services:
     ports:
       - "8001:8001"
     environment:
+      # Any OpenAI-compatible API works — set LLM_BASE_URL accordingly.
+      # See .env.example for OpenAI / OpenRouter / opencode.ai / Ollama examples.
       - LLM_BASE_URL=${LLM_BASE_URL:-https://api.openai.com/v1}
       - LLM_API_KEY=${LLM_API_KEY}
       - LLM_MODEL=${LLM_MODEL:-gpt-4o}
@@ -20,3 +22,22 @@ services:
       timeout: 10s
       retries: 3
       start_period: 10s
+
+  # ── OpenRouter example ────────────────────────────────────────────────────
+  # Uncomment below to override the environment for OpenRouter instead.
+  # Remove or keep the block above and set your .env like:
+  #
+  #   LLM_BASE_URL=https://openrouter.ai/api/v1
+  #   LLM_API_KEY=sk-or-xxxxxxxx
+  #   LLM_MODEL=anthropic/claude-3.5-sonnet
+  #   LLM_VISION_MODEL=anthropic/claude-3.5-sonnet
+  #
+  # ── opencode.ai example ──────────────────────────────────────────────────
+  # Check https://opencode.ai docs for the correct base URL, then set:
+  #
+  #   LLM_BASE_URL=https://api.opencode.ai/v1   # replace with actual URL
+  #   LLM_API_KEY=your-opencode-key
+  #   LLM_MODEL=their-model-name
+  #   LLM_VISION_MODEL=their-vision-model-name
+  #
+  # ─────────────────────────────────────────────────────────────────────────

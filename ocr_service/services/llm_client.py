@@ -18,7 +18,16 @@ _USER_IMAGE_PROMPT = "Extract all invoice/bill fields from this document image."
 
 
 def _get_client() -> OpenAI:
-    return OpenAI(base_url=settings.llm_base_url, api_key=settings.llm_api_key or "none")
+    extra_headers = {}
+    if settings.llm_site_url:
+        extra_headers["HTTP-Referer"] = settings.llm_site_url
+    if settings.llm_site_name:
+        extra_headers["X-Title"] = settings.llm_site_name
+    return OpenAI(
+        base_url=settings.llm_base_url,
+        api_key=settings.llm_api_key or "none",
+        default_headers=extra_headers or None,
+    )
 
 
 def extract_from_text(text: str) -> ExtractResponse:
