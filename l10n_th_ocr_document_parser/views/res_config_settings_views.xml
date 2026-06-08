@@ -5,23 +5,13 @@
         <field name="model">res.config.settings</field>
         <field name="inherit_id" ref="account.res_config_settings_view_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//div[@id='account']" position="after">
-                <h2>Thai OCR Document Parser</h2>
-                <div class="row mt16 o_settings_container">
-                    <div class="col-12 col-lg-6 o_setting_box">
-                        <div class="o_setting_left_pane"/>
-                        <div class="o_setting_right_pane">
-                            <label for="ocr_service_url" string="OCR Service URL"/>
-                            <div class="text-muted">
-                                URL of the OCR microservice that reads PDF/image bills
-                                (e.g. http://localhost:8001)
-                            </div>
-                            <div class="content-group">
-                                <field name="ocr_service_url" class="o_light_label" placeholder="http://localhost:8001"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <xpath expr="//block[@id='account_digitalization']" position="after">
+                <block title="Thai OCR Document Parser" id="l10n_th_ocr_block">
+                    <setting string="OCR Service URL"
+                             help="URL of the OCR microservice that reads PDF/image bills (e.g. http://localhost:8001)">
+                        <field name="ocr_service_url" placeholder="http://localhost:8001"/>
+                    </setting>
+                </block>
             </xpath>
         </field>
     </record>
