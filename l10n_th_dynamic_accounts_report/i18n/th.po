@@ -30,137 +30,20 @@ msgstr "รายงานภาษีหัก ณ ที่จ่าย"
 
 #. module: l10n_th_dynamic_accounts_report
 #: model:ir.actions.report,name:l10n_th_dynamic_accounts_report.action_print_th_tax_report
-msgid "Thai VAT Report"
-msgstr "รายงานภาษีมูลค่าเพิ่ม"
+msgid "Thai VAT Report (PDF)"
+msgstr "รายงานภาษีมูลค่าเพิ่ม (PDF)"
 
 #. module: l10n_th_dynamic_accounts_report
 #: model:ir.actions.report,name:l10n_th_dynamic_accounts_report.action_print_th_wht_report
-msgid "Thai WHT Report"
-msgstr "รายงานภาษีหัก ณ ที่จ่าย"
+msgid "Thai WHT Report (PDF)"
+msgstr "รายงานภาษีหัก ณ ที่จ่าย (PDF)"
 
 #. module: l10n_th_dynamic_accounts_report
-#: model:th.tax.report,_description:l10n_th_dynamic_accounts_report
+#: model_terms:ir.ui.view,arch_db:l10n_th_dynamic_accounts_report.res_config_settings_view_form_ocr
 msgid "Thai VAT Tax Report"
 msgstr "รายงานภาษีมูลค่าเพิ่ม (VAT)"
 
 #. module: l10n_th_dynamic_accounts_report
-#: model:th.wht.report,_description:l10n_th_dynamic_accounts_report
+#: model_terms:ir.ui.view,arch_db:l10n_th_dynamic_accounts_report.res_config_settings_view_form_ocr
 msgid "Thai Withholding Tax Report"
 msgstr "รายงานภาษีหัก ณ ที่จ่าย"
-
-#. UI strings - Tax Report
-msgid "Print (PDF)"
-msgstr "พิมพ์ (PDF)"
-
-msgid "Export (XLSX)"
-msgstr "ส่งออก (XLSX)"
-
-msgid "Date Range"
-msgstr "ช่วงวันที่"
-
-msgid "This Month"
-msgstr "เดือนนี้"
-
-msgid "This Quarter"
-msgstr "ไตรมาสนี้"
-
-msgid "This Year"
-msgstr "ปีนี้"
-
-msgid "Last Month"
-msgstr "เดือนที่แล้ว"
-
-msgid "Last Quarter"
-msgstr "ไตรมาสที่แล้ว"
-
-msgid "Last Year"
-msgstr "ปีที่แล้ว"
-
-msgid "Start Date:"
-msgstr "วันที่เริ่ม:"
-
-msgid "End Date:"
-msgstr "วันที่สิ้นสุด:"
-
-msgid "Type: Sale VAT"
-msgstr "ประเภท: ภาษีขาย"
-
-msgid "Type: Purchase VAT"
-msgstr "ประเภท: ภาษีซื้อ"
-
-msgid "Sale VAT"
-msgstr "ภาษีขาย"
-
-msgid "Purchase VAT"
-msgstr "ภาษีซื้อ"
-
-msgid "Options"
-msgstr "ตัวเลือก"
-
-msgid "Show Cancelled"
-msgstr "แสดงรายการที่ยกเลิก"
-
-msgid "No."
-msgstr "ที่"
-
-msgid "Date"
-msgstr "วันที่"
-
-msgid "Tax Inv. No."
-msgstr "เลขที่ใบกำกับภาษี"
-
-msgid "Partner"
-msgstr "คู่ค้า"
-
-msgid "Tax ID"
-msgstr "เลขประจำตัวผู้เสียภาษี"
-
-msgid "Branch"
-msgstr "สาขา"
-
-msgid "Base Amount"
-msgstr "มูลค่าฐาน"
-
-msgid "Tax Amount"
-msgstr "จำนวนภาษี"
-
-msgid "Ref"
-msgstr "เอกสารอ้างอิง"
-
-msgid "Total"
-msgstr "รวม"
-
-msgid "No data found for the selected period."
-msgstr "ไม่พบข้อมูลสำหรับช่วงเวลาที่เลือก"
-
-#. UI strings - WHT Report
-msgid "All Forms"
-msgstr "ทุกแบบฟอร์ม"
-
-msgid "Cert Date"
-msgstr "วันที่หนังสือรับรอง"
-
-msgid "Cert No."
-msgstr "เลขที่หนังสือรับรอง"
-
-msgid "Vendor"
-msgstr "ผู้ขาย"
-
-msgid "Income Type"
-msgstr "ประเภทเงินได้"
-
-msgid "% Tax"
-msgstr "อัตราภาษี %"
-
-msgid "WHT Amount"
-msgstr "จำนวนภาษีหัก ณ ที่จ่าย"
-
-#. PDF report strings
-msgid "Period:"
-msgstr "งวด:"
-
-msgid "Type:"
-msgstr "ประเภท:"
-
-msgid "PND Form:"
-msgstr "แบบฟอร์ม:"
