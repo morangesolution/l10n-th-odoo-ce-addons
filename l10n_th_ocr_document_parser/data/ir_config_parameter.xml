@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="param_ocr_service_url" model="ir.config_parameter">
+            <field name="key">l10n_th_ocr.service_url</field>
+            <field name="value">http://localhost:8001</field>
+        </record>
+    </data>
+</odoo>
