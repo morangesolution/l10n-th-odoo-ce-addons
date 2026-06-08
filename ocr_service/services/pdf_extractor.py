@@ -2,7 +2,7 @@ import io
 import base64
 import pdfplumber
 from pdf2image import convert_from_bytes
-from PIL import Image
+from config import settings
 
 
 def extract_text_from_pdf(content: bytes) -> tuple[str, bool]:
@@ -18,7 +18,6 @@ def extract_text_from_pdf(content: bytes) -> tuple[str, bool]:
     except Exception:
         text = ""
 
-    from config import settings
     is_scanned = len(text) < settings.scanned_text_threshold
     return text, is_scanned
 

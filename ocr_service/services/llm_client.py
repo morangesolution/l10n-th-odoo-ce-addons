@@ -34,7 +34,7 @@ def extract_from_text(text: str) -> ExtractResponse:
     client = _get_client()
     response = client.chat.completions.create(
         model=settings.llm_model,
-        response_format={"type": "json_object"},
+        **({"response_format": {"type": "json_object"}} if settings.llm_json_mode else {}),
         messages=[
             {"role": "system", "content": _SYSTEM_PROMPT},
             {"role": "user", "content": _USER_TEXT_PROMPT.format(text=text)},
@@ -49,7 +49,7 @@ def extract_from_image(image_b64: str, mimetype: str = "image/png") -> ExtractRe
     client = _get_client()
     response = client.chat.completions.create(
         model=settings.llm_vision_model,
-        response_format={"type": "json_object"},
+        **({"response_format": {"type": "json_object"}} if settings.llm_json_mode else {}),
         messages=[
             {"role": "system", "content": _SYSTEM_PROMPT},
             {
