@@ -28,6 +28,9 @@ class ThTaxReport(models.TransientModel):
         date_to = fields.Date.from_string(end_date) if end_date else today
         company_id = self.env.company.id
         states = ("posted", "cancel") if show_cancel else ("posted",)
+        # When show_cancel=False also hide reversed-but-posted entries (those
+        # that would appear as "(VOID)" because their reversing_id is set).
+        reversing_clause = "" if show_cancel else "AND t.reversing_id IS NULL"
 
         self._cr.execute(
             """
@@ -54,15 +57,16 @@ class ThTaxReport(models.TransientModel):
             JOIN account_move_line ml ON ml.id = t.move_line_id
             JOIN account_move m ON m.id = ml.move_id
             JOIN account_tax at ON at.id = ml.tax_line_id
-            WHERE ml.parent_state IN %s
+            WHERE ml.parent_state IN %%s
                 AND t.tax_invoice_number IS NOT NULL
-                AND at.type_tax_use = %s
-                AND t.report_date >= %s
-                AND t.report_date <= %s
-                AND ml.company_id = %s
+                AND at.type_tax_use = %%s
+                AND t.report_date >= %%s
+                AND t.report_date <= %%s
+                AND ml.company_id = %%s
                 AND t.reversed_id IS NULL
+                %s
             ORDER BY t.report_date, t.tax_invoice_number
-            """,
+            """ % reversing_clause,
             (states, tax_type, date_from, date_to, company_id),
         )
         rows = self._cr.dictfetchall()
