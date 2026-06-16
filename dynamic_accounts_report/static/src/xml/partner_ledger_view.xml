@@ -526,7 +526,7 @@
                                                 <th/>
                                                 <th/>
                                                 <th/>
-                                                <th>
+                                                <th style="text-align:right;">
                                                     <span>
                                                         <t t-if="state.total[partner]['total_debit']"
                                                            t-esc="state.total[partner]['currency_id']"/>
@@ -534,7 +534,7 @@
                                                            t-esc="state.total[partner]['total_debit_display']"/>
                                                     </span>
                                                 </th>
-                                                <th>
+                                                <th style="text-align:right;">
                                                     <span>
                                                         <t t-if="state.total[partner]['total_credit']"
                                                            t-esc="state.total[partner]['currency_id']"/>
@@ -543,7 +543,7 @@
                                                     </span>
                                                 </th>
                                                 <th/>
-                                                <th>
+                                                <th style="text-align:right;">
                                                     <span class="fw-bolder">
                                                         <t t-esc="state.total[partner]['currency_id']"/>
                                                         <t t-esc="(state.total[partner]['total_debit'] - state.total[partner]['total_credit']).toFixed(2)"/>
@@ -655,7 +655,7 @@
                                                                t-esc="valuelist[0]['matching_number']"/>
                                                         </span>
                                                     </th>
-                                                    <th>
+                                                    <th style="text-align:right;">
                                                         <span>
                                                             <t t-if="valuelist[0]['debit']"
                                                                t-esc="state.total[partner]['currency_id']"/>
@@ -663,7 +663,7 @@
                                                                t-esc="valuelist[0]['debit_display']"/>
                                                         </span>
                                                     </th>
-                                                    <th>
+                                                    <th style="text-align:right;">
                                                         <span>
                                                             <t t-if="valuelist[0]['credit']"
                                                                t-esc="state.total[partner]['currency_id']"/>
@@ -671,7 +671,7 @@
                                                                t-esc="valuelist[0]['credit_display']"/>
                                                         </span>
                                                     </th>
-                                                    <th>
+                                                    <th style="text-align:right;">
                                                         <span>
                                                             <t t-if="valuelist[0]['amount_currency']"
                                                                t-esc="state.total[partner]['currency_id']"/>
@@ -688,16 +688,16 @@
                                         <th colspan="10" class="o_heading">
                                             Total
                                         </th>
-                                        <th class="o_heading">
+                                        <th class="o_heading" style="text-align:right;">
                                             <t t-esc="state.currency"/>
                                             <t t-out="state.total_debit_display"/>
                                         </th>
-                                        <th class="o_heading">
+                                        <th class="o_heading" style="text-align:right;">
                                             <t t-esc="state.currency"/>
                                             <t t-out="state.total_credit_display"/>
                                         </th>
                                         <th/>
-                                        <th class="o_heading">
+                                        <th class="o_heading" style="text-align:right;">
                                             <t t-esc="state.currency"/>
                                             <t t-out="(state.total_debit - state.total_credit).toFixed(2)"/>
                                         </th>

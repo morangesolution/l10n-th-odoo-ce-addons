@@ -349,11 +349,11 @@
                                                             </span>
                                                         </span>
                                                     </th>
-                                                    <th style="text-align:center;">
+                                                    <th style="text-align:right;">
                                                         <t t-if="each['initial_total_debit']"
                                                            t-esc="each['initial_total_debit']"/>
                                                     </th>
-                                                    <th style="text-align:center;">
+                                                    <th style="text-align:right;">
                                                         <t t-if="each['initial_total_credit']"
                                                            t-esc="each['initial_total_credit']"/>
                                                     </th>
@@ -362,29 +362,29 @@
                                                            t-value="comparison_number_range"/>
                                                         <t t-foreach="number_of_periods"
                                                            t-as="num" t-key="num">
-                                                            <th style="text-align:center;">
+                                                            <th style="text-align:right;">
                                                                 <t t-if="each['dynamic_total_debit_' + num]"
                                                                    t-esc="each['dynamic_total_debit_' + num]"/>
                                                             </th>
-                                                            <th style="text-align:center;">
+                                                            <th style="text-align:right;">
                                                                 <t t-if="each['dynamic_total_credit_' + num]"
                                                                    t-esc="each['dynamic_total_credit_' + num]"/>
                                                             </th>
                                                         </t>
                                                     </t>
-                                                    <th style="text-align:center;">
+                                                    <th style="text-align:right;">
                                                         <t t-if="each['total_debit']"
                                                            t-esc="each['total_debit']"/>
                                                     </th>
-                                                    <th style="text-align:center;">
+                                                    <th style="text-align:right;">
                                                         <t t-if="each['total_credit']"
                                                            t-esc="each['total_credit']"/>
                                                     </th>
-                                                    <th style="text-align:center;">
+                                                    <th style="text-align:right;">
                                                         <t t-if="each['end_total_debit']"
                                                            t-esc="each['end_total_debit']"/>
                                                     </th>
-                                                    <th style="text-align:center;">
+                                                    <th style="text-align:right;">
                                                         <t t-if="each['end_total_credit']"
                                                            t-esc="each['end_total_credit']"/>
                                                     </th>
@@ -396,10 +396,10 @@
                                                     style="border-spacing: 0 10px;color:#000;font-weight:bold;background-color:#f8f9fa;">
                                                     <th colspan="6">Total</th>
                                                     <!-- Initial Balance Totals -->
-                                                    <th style="text-align:center;">
+                                                    <th style="text-align:right;">
                                                         <t t-esc="sumByKey(state.data, 'initial_total_debit')"/>
                                                     </th>
-                                                    <th style="text-align:center;">
+                                                    <th style="text-align:right;">
                                                         <t t-esc="sumByKey(state.data, 'initial_total_credit')"/>
                                                     </th>
                                                     <!-- Dynamic Period Totals (when comparison is applied) -->
@@ -408,26 +408,26 @@
                                                            t-value="comparison_number_range"/>
                                                         <t t-foreach="number_of_periods"
                                                            t-as="num" t-key="num">
-                                                            <th style="text-align:center;">
+                                                            <th style="text-align:right;">
                                                                 <t t-esc="sumByKey(state.data, 'dynamic_total_debit_' + num)"/>
                                                             </th>
-                                                            <th style="text-align:center;">
+                                                            <th style="text-align:right;">
                                                                 <t t-esc="sumByKey(state.data, 'dynamic_total_credit_' + num)"/>
                                                             </th>
                                                         </t>
                                                     </t>
                                                     <!-- Current Period Totals -->
-                                                    <th style="text-align:center;">
+                                                    <th style="text-align:right;">
                                                         <t t-esc="sumByKey(state.data, 'total_debit')"/>
                                                     </th>
-                                                    <th style="text-align:center;">
+                                                    <th style="text-align:right;">
                                                         <t t-esc="sumByKey(state.data, 'total_credit')"/>
                                                     </th>
                                                     <!-- End Balance Totals -->
-                                                    <th style="text-align:center;">
+                                                    <th style="text-align:right;">
                                                         <t t-esc="sumByKey(state.data, 'end_total_debit')"/>
                                                     </th>
-                                                    <th style="text-align:center;">
+                                                    <th style="text-align:right;">
                                                         <t t-esc="sumByKey(state.data, 'end_total_credit')"/>
                                                     </th>
                                                 </tr>
@@ -475,11 +475,11 @@
                                                             </span>
                                                         </span>
                                                     </th>
-                                                    <th style="text-align:center;">
+                                                    <th style="text-align:right;">
                                                         <t t-if="move_line['initial_total_debit']"
                                                            t-esc="move_line['initial_total_debit']"/>
                                                     </th>
-                                                    <th style="text-align:center;">
+                                                    <th style="text-align:right;">
                                                         <t t-if="move_line['initial_total_credit']"
                                                            t-esc="move_line['initial_total_credit']"/>
                                                     </th>
@@ -488,29 +488,29 @@
                                                            t-value="comparison_number_range"/>
                                                         <t t-foreach="number_of_periods"
                                                            t-as="num" t-key="num">
-                                                            <th style="text-align:center;">
+                                                            <th style="text-align:right;">
                                                                 <t t-if="move_line['dynamic_total_debit_' + num]"
                                                                    t-esc="move_line['dynamic_total_debit_' + num]"/>
                                                             </th>
-                                                            <th style="text-align:center;">
+                                                            <th style="text-align:right;">
                                                                 <t t-if="move_line['dynamic_total_credit_' + num]"
                                                                    t-esc="move_line['dynamic_total_credit_' + num]"/>
                                                             </th>
                                                         </t>
                                                     </t>
-                                                    <th style="text-align:center;">
+                                                    <th style="text-align:right;">
                                                         <t t-if="move_line['total_debit']"
                                                            t-esc="move_line['total_debit']"/>
                                                     </th>
-                                                    <th style="text-align:center;">
+                                                    <th style="text-align:right;">
                                                         <t t-if="move_line['total_credit']"
                                                            t-esc="move_line['total_credit']"/>
                                                     </th>
-                                                    <th style="text-align:center;">
+                                                    <th style="text-align:right;">
                                                         <t t-if="move_line['end_total_debit']"
                                                            t-esc="move_line['end_total_debit']"/>
                                                     </th>
-                                                    <th style="text-align:center;">
+                                                    <th style="text-align:right;">
                                                         <t t-if="move_line['end_total_credit']"
                                                            t-esc="move_line['end_total_credit']"/>
                                                     </th>
@@ -522,10 +522,10 @@
                                                     style="border-spacing: 0 10px;color:#000;font-weight:bold;background-color:#f8f9fa;">
                                                     <th colspan="6">Total</th>
                                                     <!-- Initial Balance Totals -->
-                                                    <th style="text-align:center;">
+                                                    <th style="text-align:right;">
                                                         <t t-esc="sumByKey(state.data, 'initial_total_debit')"/>
                                                     </th>
-                                                    <th style="text-align:center;">
+                                                    <th style="text-align:right;">
                                                         <t t-esc="sumByKey(state.data, 'initial_total_credit')"/>
                                                     </th>
                                                     <!-- Dynamic Period Totals (when comparison is applied) -->
@@ -534,26 +534,26 @@
                                                            t-value="comparison_number_range"/>
                                                         <t t-foreach="number_of_periods"
                                                            t-as="num" t-key="num">
-                                                            <th style="text-align:center;">
+                                                            <th style="text-align:right;">
                                                                 <t t-esc="sumByKey(state.data, 'dynamic_total_debit_' + num)"/>
                                                             </th>
-                                                            <th style="text-align:center;">
+                                                            <th style="text-align:right;">
                                                                 <t t-esc="sumByKey(state.data, 'dynamic_total_credit_' + num)"/>
                                                             </th>
                                                         </t>
                                                     </t>
                                                     <!-- Current Period Totals -->
-                                                    <th style="text-align:center;">
+                                                    <th style="text-align:right;">
                                                         <t t-esc="sumByKey(state.data, 'total_debit')"/>
                                                     </th>
-                                                    <th style="text-align:center;">
+                                                    <th style="text-align:right;">
                                                         <t t-esc="sumByKey(state.data, 'total_credit')"/>
                                                     </th>
                                                     <!-- End Balance Totals -->
-                                                    <th style="text-align:center;">
+                                                    <th style="text-align:right;">
                                                         <t t-esc="sumByKey(state.data, 'end_total_debit')"/>
                                                     </th>
-                                                    <th style="text-align:center;">
+                                                    <th style="text-align:right;">
                                                         <t t-esc="sumByKey(state.data, 'end_total_credit')"/>
                                                     </th>
                                                 </tr>

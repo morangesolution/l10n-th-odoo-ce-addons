@@ -93,8 +93,8 @@ class AccountTrialBalance(models.TransientModel):
                 'journal_ids': self.env['account.journal'].search_read([], ['name']),
                 'initial_total_debit': "{:,.2f}".format(initial_total_debit),
                 'initial_total_credit': "{:,.2f}".format(initial_total_credit),
-                'total_debit': total_debit,
-                'total_credit': total_credit,
+                'total_debit': "{:,.2f}".format(total_debit),
+                'total_credit': "{:,.2f}".format(total_credit),
                 'end_total_debit': "{:,.2f}".format(end_total_debit),
                 'end_total_credit': "{:,.2f}".format(end_total_credit)
             }
@@ -321,24 +321,23 @@ class AccountTrialBalance(models.TransientModel):
                 'group_name': account_id.group_id.name or '',
                 'journal_ids': self.env['account.journal'].search_read([], [
                     'name']),
-                'initial_total_debit': initial_total_debit,
-                'initial_total_credit': initial_total_credit,
-                'total_debit': total_debit,
-                'total_credit': total_credit,
-                'end_total_debit': end_total_debit,
-                'end_total_credit': end_total_credit
+                'initial_total_debit': "{:,.2f}".format(initial_total_debit),
+                'initial_total_credit': "{:,.2f}".format(initial_total_credit),
+                'total_debit': "{:,.2f}".format(total_debit),
+                'total_credit': "{:,.2f}".format(total_credit),
+                'end_total_debit': "{:,.2f}".format(end_total_debit),
+                'end_total_credit': "{:,.2f}".format(end_total_credit)
             }
             if comparison_number:
                 if dynamic_date_num:
                     data['dynamic_date_num'] = dynamic_date_num
                 for i in range(1, eval(comparison_number) + 1):
-                    data[f'dynamic_total_debit_{i}'] = dynamic_total_debit.get(
+                    data[f'dynamic_total_debit_{i}'] = "{:,.2f}".format(dynamic_total_debit.get(
                         f"dynamic_total_debit_{eval(comparison_number) + 1 - i}",
-                        0.0)
-                    data[
-                        f'dynamic_total_credit_{i}'] = dynamic_total_credit.get(
+                        0.0))
+                    data[f'dynamic_total_credit_{i}'] = "{:,.2f}".format(dynamic_total_credit.get(
                         f"dynamic_total_credit_{eval(comparison_number) + 1 - i}",
-                        0.0)
+                        0.0))
             move_line_list.append(data)
         totals = self._calculate_totals(move_line_list, comparison_number)
         return move_line_list, totals

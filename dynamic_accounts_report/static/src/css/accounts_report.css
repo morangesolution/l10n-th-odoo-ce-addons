@@ -7,5 +7,15 @@
 	margin-right: 2px;
 }
 
+/* Center all table header cells across all reports */
+table thead th {
+	text-align: center !important;
+}
+
+/* Override Bootstrap text-end on header rows (balance sheet, P&L) */
+table thead tr.o_heading th {
+	text-align: center !important;
+}
+
 
 
