@@ -146,12 +146,12 @@ class TaxReport(models.TransientModel):
                                     tax_credit_sums = sum(
                                         record['credit'] for record in tax_id)
                                     dynamic_total_net_sum[
-                                        f"dynamic_total_net_sum{i}"] = tax_debit_sums + tax_credit_sums
+                                        f"dynamic_total_net_sum{i}"] = round(tax_debit_sums + tax_credit_sums, 2)
                                     dynamic_total_tax_sum[
-                                        f"dynamic_total_tax_sum{i}"] = \
+                                        f"dynamic_total_tax_sum{i}"] = round(
                                         dynamic_total_net_sum[
                                             f"dynamic_total_net_sum{i}"] * (
-                                                tax.amount / 100)
+                                                tax.amount / 100), 2)
                             elif comparison_type == 'month':
                                 dynamic_date_num[
                                     f"dynamic_date_num{0}"] = self.get_month_name(
@@ -174,12 +174,12 @@ class TaxReport(models.TransientModel):
                                     tax_credit_sums = sum(
                                         record['credit'] for record in tax_id)
                                     dynamic_total_net_sum[
-                                        f"dynamic_total_net_sum{i}"] = tax_debit_sums + tax_credit_sums
+                                        f"dynamic_total_net_sum{i}"] = round(tax_debit_sums + tax_credit_sums, 2)
                                     dynamic_total_tax_sum[
-                                        f"dynamic_total_tax_sum{i}"] = \
+                                        f"dynamic_total_tax_sum{i}"] = round(
                                         dynamic_total_net_sum[
                                             f"dynamic_total_net_sum{i}"] * (
-                                                tax.amount / 100)
+                                                tax.amount / 100), 2)
                                     dynamic_date_num[
                                         f"dynamic_date_num{i}"] = self.get_month_name(
                                         com_start_date) + ' ' + str(
@@ -209,12 +209,12 @@ class TaxReport(models.TransientModel):
                                     tax_credit_sums = sum(
                                         record['credit'] for record in tax_id)
                                     dynamic_total_net_sum[
-                                        f"dynamic_total_net_sum{i}"] = tax_debit_sums + tax_credit_sums
+                                        f"dynamic_total_net_sum{i}"] = round(tax_debit_sums + tax_credit_sums, 2)
                                     dynamic_total_tax_sum[
-                                        f"dynamic_total_tax_sum{i}"] = \
+                                        f"dynamic_total_tax_sum{i}"] = round(
                                         dynamic_total_net_sum[
                                             f"dynamic_total_net_sum{i}"] * (
-                                                tax.amount / 100)
+                                                tax.amount / 100), 2)
                                     dynamic_date_num[
                                         f"dynamic_date_num{i}"] = 'Q' + ' ' + str(
                                         get_quarter_number(
@@ -316,12 +316,12 @@ class TaxReport(models.TransientModel):
                                 tax_credit_sums = sum(
                                     record['credit'] for record in tax_id)
                                 dynamic_total_net_sum[
-                                    f"dynamic_total_net_sum{i}"] = tax_debit_sums + tax_credit_sums
+                                    f"dynamic_total_net_sum{i}"] = round(tax_debit_sums + tax_credit_sums, 2)
                                 dynamic_total_tax_sum[
-                                    f"dynamic_total_tax_sum{i}"] = \
+                                    f"dynamic_total_tax_sum{i}"] = round(
                                     dynamic_total_net_sum[
                                         f"dynamic_total_net_sum{i}"] * (
-                                            tax.amount / 100)
+                                            tax.amount / 100), 2)
                         elif comparison_type == 'month':
                             dynamic_date_num[
                                 f"dynamic_date_num{0}"] = self.get_month_name(
@@ -343,12 +343,12 @@ class TaxReport(models.TransientModel):
                                 tax_credit_sums = sum(
                                     record['credit'] for record in tax_id)
                                 dynamic_total_net_sum[
-                                    f"dynamic_total_net_sum{i}"] = tax_debit_sums + tax_credit_sums
+                                    f"dynamic_total_net_sum{i}"] = round(tax_debit_sums + tax_credit_sums, 2)
                                 dynamic_total_tax_sum[
-                                    f"dynamic_total_tax_sum{i}"] = \
+                                    f"dynamic_total_tax_sum{i}"] = round(
                                     dynamic_total_net_sum[
                                         f"dynamic_total_net_sum{i}"] * (
-                                            tax.amount / 100)
+                                            tax.amount / 100), 2)
                                 dynamic_date_num[
                                     f"dynamic_date_num{i}"] = self.get_month_name(
                                     com_start_date) + ' ' + str(
@@ -377,12 +377,12 @@ class TaxReport(models.TransientModel):
                                 tax_credit_sums = sum(
                                     record['credit'] for record in tax_id)
                                 dynamic_total_net_sum[
-                                    f"dynamic_total_net_sum{i}"] = tax_debit_sums + tax_credit_sums
+                                    f"dynamic_total_net_sum{i}"] = round(tax_debit_sums + tax_credit_sums, 2)
                                 dynamic_total_tax_sum[
-                                    f"dynamic_total_tax_sum{i}"] = \
+                                    f"dynamic_total_tax_sum{i}"] = round(
                                     dynamic_total_net_sum[
                                         f"dynamic_total_net_sum{i}"] * (
-                                            tax.amount / 100)
+                                            tax.amount / 100), 2)
                                 dynamic_date_num[
                                     f"dynamic_date_num{i}"] = 'Q' + ' ' + str(
                                     get_quarter_number(
@@ -475,12 +475,12 @@ class TaxReport(models.TransientModel):
                             tax_credit_sums = sum(
                                 record['credit'] for record in tax_id)
                             dynamic_total_net_sum[
-                                f"dynamic_total_net_sum{i}"] = tax_debit_sums + tax_credit_sums
+                                f"dynamic_total_net_sum{i}"] = round(tax_debit_sums + tax_credit_sums, 2)
                             dynamic_total_tax_sum[
-                                f"dynamic_total_tax_sum{i}"] = \
+                                f"dynamic_total_tax_sum{i}"] = round(
                                 dynamic_total_net_sum[
                                     f"dynamic_total_net_sum{i}"] * (
-                                        tax.amount / 100)
+                                        tax.amount / 100), 2)
                     elif comparison_type == 'month':
                         dynamic_date_num[
                             f"dynamic_date_num{0}"] = self.get_month_name(
@@ -500,12 +500,12 @@ class TaxReport(models.TransientModel):
                             tax_credit_sums = sum(
                                 record['credit'] for record in tax_id)
                             dynamic_total_net_sum[
-                                f"dynamic_total_net_sum{i}"] = tax_debit_sums + tax_credit_sums
+                                f"dynamic_total_net_sum{i}"] = round(tax_debit_sums + tax_credit_sums, 2)
                             dynamic_total_tax_sum[
-                                f"dynamic_total_tax_sum{i}"] = \
+                                f"dynamic_total_tax_sum{i}"] = round(
                                 dynamic_total_net_sum[
                                     f"dynamic_total_net_sum{i}"] * (
-                                        tax.amount / 100)
+                                        tax.amount / 100), 2)
                             dynamic_date_num[
                                 f"dynamic_date_num{i}"] = self.get_month_name(
                                 com_start_date) + ' ' + str(
@@ -532,12 +532,12 @@ class TaxReport(models.TransientModel):
                             tax_credit_sums = sum(
                                 record['credit'] for record in tax_id)
                             dynamic_total_net_sum[
-                                f"dynamic_total_net_sum{i}"] = tax_debit_sums + tax_credit_sums
+                                f"dynamic_total_net_sum{i}"] = round(tax_debit_sums + tax_credit_sums, 2)
                             dynamic_total_tax_sum[
-                                f"dynamic_total_tax_sum{i}"] = \
+                                f"dynamic_total_tax_sum{i}"] = round(
                                 dynamic_total_net_sum[
                                     f"dynamic_total_net_sum{i}"] * (
-                                        tax.amount / 100)
+                                        tax.amount / 100), 2)
                             dynamic_date_num[
                                 f"dynamic_date_num{i}"] = 'Q' + ' ' + str(
                                 get_quarter_number(

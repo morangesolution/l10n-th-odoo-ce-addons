@@ -25,14 +25,14 @@
                         <thead style="background:#D3D3D3;">
                             <tr>
                                 <th class="text-center">No.</th>
-                                <th>Date</th>
-                                <th>Tax Inv. No.</th>
-                                <th>Partner</th>
-                                <th>Tax ID</th>
-                                <th>Branch</th>
-                                <th class="text-right">Base Amount</th>
-                                <th class="text-right">Tax Amount</th>
-                                <th>Ref</th>
+                                <th class="text-center">Date</th>
+                                <th class="text-center">Tax Inv. No.</th>
+                                <th class="text-center">Partner</th>
+                                <th class="text-center">Tax ID</th>
+                                <th class="text-center">Branch</th>
+                                <th class="text-center">Base Amount</th>
+                                <th class="text-center">Tax Amount</th>
+                                <th class="text-center">Ref</th>
                             </tr>
                         </thead>
                         <tbody style="font-size:10px;font-weight:100;">

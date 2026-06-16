@@ -25,14 +25,14 @@
                         <thead style="background:#D3D3D3;">
                             <tr>
                                 <th class="text-center">No.</th>
-                                <th>Cert Date</th>
-                                <th>Cert No.</th>
-                                <th>Vendor</th>
-                                <th>Tax ID</th>
-                                <th>Income Type</th>
-                                <th class="text-right">% Tax</th>
-                                <th class="text-right">Base Amount</th>
-                                <th class="text-right">WHT Amount</th>
+                                <th class="text-center">Cert Date</th>
+                                <th class="text-center">Cert No.</th>
+                                <th class="text-center">Vendor</th>
+                                <th class="text-center">Tax ID</th>
+                                <th class="text-center">Income Type</th>
+                                <th class="text-center">% Tax</th>
+                                <th class="text-center">Base Amount</th>
+                                <th class="text-center">WHT Amount</th>
                             </tr>
                         </thead>
                         <tbody style="font-size:10px;font-weight:100;">

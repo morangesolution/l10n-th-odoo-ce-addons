@@ -480,6 +480,14 @@ class TaxReport extends owl.Component {
         }
         return range.reverse();
     }
+
+    formatAmount(value) {
+        if (value === undefined || value === null) return "";
+        return Number(value).toLocaleString("en-US", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+        });
+    }
 }
 TaxReport.template = 'tax_r_template_new';
 actionRegistry.add("tax_r", TaxReport);
