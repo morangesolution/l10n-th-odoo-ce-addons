@@ -32,7 +32,7 @@ class ThTaxReport(models.TransientModel):
         # that would appear as "(VOID)" because their reversing_id is set).
         reversing_clause = "" if show_cancel else "AND t.reversing_id IS NULL"
 
-        self._cr.execute(
+        self.env.cr.execute(
             """
             SELECT
                 t.partner_id,
@@ -69,7 +69,7 @@ class ThTaxReport(models.TransientModel):
             """ % reversing_clause,
             (states, tax_type, date_from, date_to, company_id),
         )
-        rows = self._cr.dictfetchall()
+        rows = self.env.cr.dictfetchall()
 
         partner_model = self.env["res.partner"]
         lines = []
