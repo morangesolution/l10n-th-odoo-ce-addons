@@ -1,15 +1,15 @@
 /** @odoo-module */
-const { Component } = owl;
 import { registry } from "@web/core/registry";
 import { useService } from "@web/core/utils/hooks";
-import { useRef, useState, useEffect } from "@odoo/owl";
+import { Component, useRef, useState, useEffect } from "@odoo/owl";
+import { DateTime } from "luxon";
 import { BlockUI } from "@web/core/ui/block_ui";
 import { download } from "@web/core/network/download";
 const actionRegistry = registry.category("actions");
-const today = luxon.DateTime.now();
+const today = DateTime.now();
 let monthNamesShort = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
-class TrialBalance extends owl.Component {
+class TrialBalance extends Component {
     async setup() {
         this.initial_render = true;
         this.orm = useService('orm');
@@ -548,8 +548,6 @@ class TrialBalance extends owl.Component {
         await download({
             url: '/xlsx_report',
             data: action.data,
-            complete: () => unblockUI,
-            error: (error) => self.call('crash_manager', 'rpc_error', error),
         });
     }
     async show_gl(ev) {

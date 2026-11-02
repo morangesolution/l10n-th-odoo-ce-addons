@@ -9,16 +9,16 @@
                     <t t-set="filters" t-value="data.get('filters', {})"/>
                     <t t-set="tax_type_label" t-value="'Sale VAT' if filters.get('tax_type') == 'sale' else 'Purchase VAT'"/>
                     <h3 class="text-center">
-                        <b><t t-esc="data.get('title', 'Thai VAT Report')"/></b>
+                        <b><t t-out="data.get('title', 'Thai VAT Report')"/></b>
                     </h3>
                     <div class="row mb-2" style="font-size:11px;">
                         <div class="col-6">
                             <strong>Period:</strong>
-                            <t t-esc="filters.get('start_date', '')"/> to
-                            <t t-esc="filters.get('end_date', '')"/>
+                            <t t-out="filters.get('start_date', '')"/> to
+                            <t t-out="filters.get('end_date', '')"/>
                         </div>
                         <div class="col-6">
-                            <strong>Type:</strong> <t t-esc="tax_type_label"/>
+                            <strong>Type:</strong> <t t-out="tax_type_label"/>
                         </div>
                     </div>
                     <table class="table table-sm table-bordered" style="font-size:0.82em;">
@@ -38,19 +38,19 @@
                         <tbody style="font-size:10px;font-weight:100;">
                             <t t-foreach="data.get('lines', [])" t-as="line">
                                 <tr t-att-style="'color:#999;' if '(VOID)' in (line.get('tax_invoice_number') or '') else ''">
-                                    <td class="text-center"><t t-esc="line.get('no')"/></td>
-                                    <td><t t-esc="line.get('tax_date')"/></td>
-                                    <td><t t-esc="line.get('tax_invoice_number')"/></td>
-                                    <td><t t-esc="line.get('partner_name')"/></td>
-                                    <td><t t-esc="line.get('partner_vat')"/></td>
-                                    <td><t t-esc="line.get('partner_branch')"/></td>
+                                    <td class="text-center"><t t-out="line.get('no')"/></td>
+                                    <td><t t-out="line.get('tax_date')"/></td>
+                                    <td><t t-out="line.get('tax_invoice_number')"/></td>
+                                    <td><t t-out="line.get('partner_name')"/></td>
+                                    <td><t t-out="line.get('partner_vat')"/></td>
+                                    <td><t t-out="line.get('partner_branch')"/></td>
                                     <td class="text-right">
-                                        <t t-esc="'{:,.2f}'.format(line.get('base_amount', 0))"/>
+                                        <t t-out="'{:,.2f}'.format(line.get('base_amount', 0))"/>
                                     </td>
                                     <td class="text-right">
-                                        <t t-esc="'{:,.2f}'.format(line.get('tax_amount', 0))"/>
+                                        <t t-out="'{:,.2f}'.format(line.get('tax_amount', 0))"/>
                                     </td>
-                                    <td><t t-esc="line.get('doc_ref')"/></td>
+                                    <td><t t-out="line.get('doc_ref')"/></td>
                                 </tr>
                             </t>
                         </tbody>
@@ -58,10 +58,10 @@
                             <tr style="font-weight:bold;background-color:#f8f9fa;">
                                 <td colspan="6" class="text-right">Total</td>
                                 <td class="text-right">
-                                    <t t-esc="'{:,.2f}'.format(data.get('total_base', 0))"/>
+                                    <t t-out="'{:,.2f}'.format(data.get('total_base', 0))"/>
                                 </td>
                                 <td class="text-right">
-                                    <t t-esc="'{:,.2f}'.format(data.get('total_tax', 0))"/>
+                                    <t t-out="'{:,.2f}'.format(data.get('total_tax', 0))"/>
                                 </td>
                                 <td/>
                             </tr>

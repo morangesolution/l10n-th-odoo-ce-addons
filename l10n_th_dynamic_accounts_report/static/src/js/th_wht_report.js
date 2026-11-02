@@ -1,17 +1,15 @@
-/** @odoo-module */
-const { Component } = owl;
+/** @odoo-module **/
+import { Component, onMounted, useRef, useState } from "@odoo/owl";
+import { DateTime } from "luxon";
 import { registry } from "@web/core/registry";
 import { useService } from "@web/core/utils/hooks";
-import { useRef, useState } from "@odoo/owl";
-import { BlockUI } from "@web/core/ui/block_ui";
 import { download } from "@web/core/network/download";
 
 const actionRegistry = registry.category("actions");
-const today = luxon.DateTime.now();
+const today = DateTime.now();
 
-class ThWhtReport extends owl.Component {
-    async setup() {
-        super.setup(...arguments);
+class ThWhtReport extends Component {
+    setup() {
         this.orm = useService("orm");
         this.action = useService("action");
         this.start_date = useRef("date_from");
@@ -22,7 +20,7 @@ class ThWhtReport extends owl.Component {
             show_cancel: false,
             date_range: "month",
         });
-        this.load_data();
+        onMounted(() => this.load_data());
     }
 
     async load_data() {
@@ -108,7 +106,7 @@ class ThWhtReport extends owl.Component {
                 income_tax_form: this.state.income_tax_form,
                 show_cancel: this.state.show_cancel,
             },
-            title: this.props.action.display_name,
+            title: this.props.action.display_name || this.props.action.name,
         };
     }
 
@@ -120,7 +118,7 @@ class ThWhtReport extends owl.Component {
             report_name: "l10n_th_dynamic_accounts_report.th_wht_report",
             report_file: "l10n_th_dynamic_accounts_report.th_wht_report",
             data: this._buildPrintData(),
-            display_name: this.props.action.display_name,
+            display_name: this.props.action.display_name || this.props.action.name,
         });
     }
 
@@ -131,15 +129,12 @@ class ThWhtReport extends owl.Component {
                 data: JSON.stringify(this._buildPrintData()),
                 output_format: "xlsx",
                 report_action: this.props.action.id,
-                report_name: this.props.action.display_name,
+                report_name: this.props.action.display_name || this.props.action.name,
             },
         };
-        BlockUI;
         await download({
             url: "/xlsx_report",
             data: action.data,
-            complete: () => {},
-            error: (error) => this.call("crash_manager", "rpc_error", error),
         });
     }
 

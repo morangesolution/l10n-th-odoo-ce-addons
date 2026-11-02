@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <templates>
-    <t t-name="age_p_template_new" owl="1">
+    <t t-name="age_p_template_new">
         <!-- Section contains a structure for the Aged Payable report, including
         a filter view and a table view. It has div elements for the filter view
         and table view, with respective classes for styling.-->
@@ -359,31 +359,31 @@
                                             </th>
                                             <th class="o_heading" style="text-align:right;">
                                                 <t t-esc="state.currency"/>
-                                                <t t-out="state.diff0_sum"/>
+                                                <t t-esc="state.diff0_sum"/>
                                             </th>
                                             <th class="o_heading" style="text-align:right;">
                                                 <t t-esc="state.currency"/>
-                                                <t t-out="state.diff1_sum"/>
+                                                <t t-esc="state.diff1_sum"/>
                                             </th>
                                             <th class="o_heading" style="text-align:right;">
                                                 <t t-esc="state.currency"/>
-                                                <t t-out="state.diff2_sum"/>
+                                                <t t-esc="state.diff2_sum"/>
                                             </th>
                                             <th class="o_heading" style="text-align:right;">
                                                 <t t-esc="state.currency"/>
-                                                <t t-out="state.diff3_sum"/>
+                                                <t t-esc="state.diff3_sum"/>
                                             </th>
                                             <th class="o_heading" style="text-align:right;">
                                                 <t t-esc="state.currency"/>
-                                                <t t-out="state.diff4_sum"/>
+                                                <t t-esc="state.diff4_sum"/>
                                             </th>
                                             <th class="o_heading" style="text-align:right;">
                                                 <t t-esc="state.currency"/>
-                                                <t t-out="state.diff5_sum"/>
+                                                <t t-esc="state.diff5_sum"/>
                                             </th>
                                             <th class="o_heading" style="text-align:right;">
                                                 <t t-esc="state.currency"/>
-                                                <t t-out="state.total_credit"/>
+                                                <t t-esc="state.total_credit"/>
                                             </th>
                                         </tr>
                                     </tbody>

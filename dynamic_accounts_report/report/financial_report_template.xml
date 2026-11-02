@@ -11,7 +11,7 @@
                     <h3>
                         <center>
                             <b>
-                                <span t-esc="report_name"/>
+                                <span t-out="report_name"/>
                             </b>
                         </center>
                     </h3>
@@ -48,7 +48,7 @@
                                    t-as="periodData"
                                    t-key="periodData_index">
                                     <th class="text-end">
-                                        <t t-esc="periodData"/>
+                                        <t t-out="periodData"/>
                                     </th>
                                 </t>
                             </t>
@@ -76,7 +76,7 @@
                                 <th class="text-end">
                                     <span class="fw-bolder">
                                         <t t-if="total['total']"
-                                           t-esc="total['total']"/>
+                                           t-out="total['total']"/>
                                     </span>
                                 </th>
                             </t>
@@ -103,7 +103,7 @@
                            t-key="total_index">
                                 <th class="text-end">
                                     <span>
-                                        <t t-esc="total['income'][1]"/>
+                                        <t t-out="total['income'][1]"/>
                                     </span>
                                 </th>
                             </t>
@@ -118,7 +118,7 @@
                            t-key="total_index">
                             <th class="text-end">
                                 <span>
-                                    <t t-esc="total['expense_direct_cost'][1]"/>
+                                    <t t-out="total['expense_direct_cost'][1]"/>
                                 </span>
                             </th>
                             </t>
@@ -132,7 +132,7 @@
                            t-key="total_index">
                             <th class="text-end">
                                 <span>
-                                    <t t-esc="total['income_other'][1]"/>
+                                    <t t-out="total['income_other'][1]"/>
                                 </span>
                             </th>
                             </t>
@@ -147,7 +147,7 @@
                            t-key="total_index">
                             <th class="text-end">
                                 <span class="fw-bolder">
-                                    <t t-esc="total['total_income']"/>
+                                    <t t-out="total['total_income']"/>
                                 </span>
                             </th>
                             </t>
@@ -167,7 +167,7 @@
                            t-key="total_index">
                                 <th class="text-end">
                                     <span>
-                                        <t t-esc="total['expense'][1]"/>
+                                        <t t-out="total['expense'][1]"/>
                                     </span>
                                 </th>
                                 </t>
@@ -181,7 +181,7 @@
                            t-key="total_index">
                                 <th class="text-end">
                                     <span>
-                                        <t t-esc="total['expense_depreciation'][1]"/>
+                                        <t t-out="total['expense_depreciation'][1]"/>
                                     </span>
                                 </th>
                                 </t>
@@ -195,7 +195,7 @@
                            t-key="total_index">
                                 <th class="text-end">
                                     <span class="fw-bolder">
-                                        <t t-esc="total['total_expense']"/>
+                                        <t t-out="total['total_expense']"/>
                                     </span>
                                 </th>
                             </t>

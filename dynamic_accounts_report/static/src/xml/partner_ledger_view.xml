@@ -4,7 +4,7 @@
     The pl_template_new template for the PartnerLedger component.
     @param {Object} state - The state object containing the component's state data.
     -->
-    <t t-name="pl_template_new" owl="1">
+    <t t-name="pl_template_new">
         <div class="container">
             <div class="fin_report">
                 <!-- Filter View -->
@@ -690,16 +690,16 @@
                                         </th>
                                         <th class="o_heading" style="text-align:right;">
                                             <t t-esc="state.currency"/>
-                                            <t t-out="state.total_debit_display"/>
+                                            <t t-esc="state.total_debit_display"/>
                                         </th>
                                         <th class="o_heading" style="text-align:right;">
                                             <t t-esc="state.currency"/>
-                                            <t t-out="state.total_credit_display"/>
+                                            <t t-esc="state.total_credit_display"/>
                                         </th>
                                         <th/>
                                         <th class="o_heading" style="text-align:right;">
                                             <t t-esc="state.currency"/>
-                                            <t t-out="(state.total_debit - state.total_credit).toFixed(2)"/>
+                                            <t t-esc="(state.total_debit - state.total_credit).toFixed(2)"/>
                                         </th>
                                     </tr>
                                 </tbody>
@@ -712,9 +712,9 @@
                 <t t-set="count" t-value="1"/>
                 <t t-foreach="state.message_list" t-as="message"
                    t-key="message_index">
-                    <t t-out="count"/>.
+                    <t t-esc="count"/>.
                     <t t-set="count" t-value="count + 1"/>
-                    <t t-out="message['message']"/>
+                    <t t-esc="message['message']"/>
                     <i t-att-id="message['id']" style="margin-left: 1%;"
                        class="fa fa-trash"
                        t-on-click="deleteNote"/>

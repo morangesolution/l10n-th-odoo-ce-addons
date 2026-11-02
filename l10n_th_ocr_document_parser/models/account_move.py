@@ -166,7 +166,6 @@ class AccountMove(models.Model):
                     [
                         ("company_ids", "in", [company.id]),
                         ("account_type", "=", "expense"),
-                        ("deprecated", "=", False),
                     ],
                     limit=1,
                 )

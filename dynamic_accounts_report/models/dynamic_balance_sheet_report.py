@@ -56,11 +56,13 @@ class ProfitLossReport(models.TransientModel):
     date_to = fields.Date(string="End date", help="Specify the end date.")
 
     @api.model_create_multi
-    def create(self, vals):
+    def create(self, vals_list):
         """Create one or more records of ProfitLossReport.
-        :param vals: A dictionary or a list of dictionaries containing the field values for the records to be created.
-        :return: A recordset of the created ProfitLossReport records."""
-        return super(ProfitLossReport, self).create({})
+        :param vals_list: A list of dictionaries containing the field values
+            for the records to be created.
+        :return: A recordset of the created ProfitLossReport records.
+        """
+        return super(ProfitLossReport, self).create(vals_list)
 
     @api.model
     def view_report(self, option, comparison, comparison_type):

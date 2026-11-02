@@ -3,7 +3,7 @@
 
 {
     "name": "Dynamic Accounts Report - Thai Tax",
-    "version": "18.0.1.0.0",
+    "version": "19.0.1.0.0",
     "author": "Morange Solution Co., Ltd.",
     "website": "https://www.morange.co.th",
     "license": "AGPL-3",

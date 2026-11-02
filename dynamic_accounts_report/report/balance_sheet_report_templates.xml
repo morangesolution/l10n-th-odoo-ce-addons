@@ -10,7 +10,7 @@
                 <t t-set="data_report_dpi" t-value="110"/>
                 <div class="page">
                     <h3>
-                        <span t-esc="report_name"/><!-- Report title -->
+                        <span t-out="report_name"/><!-- Report title -->
                     </h3>
                     <br/>
                     <table cellspacing="0" width="100%"
@@ -24,7 +24,7 @@
                                        t-as="periodData"
                                        t-key="periodData_index">
                                         <th class="text-end">
-                                            <t t-esc="periodData"/>
+                                            <t t-out="periodData"/>
                                         </th>
                                     </t>
                                 </t>
@@ -69,7 +69,7 @@
                                     <th class="text-end"
                                         style="font-weight: normal;">
                                         <span>
-                                            <t t-esc="datas['asset_cash'][1]"/>
+                                            <t t-out="datas['asset_cash'][1]"/>
                                         </span>
                                     </th>
                                 </t>
@@ -81,7 +81,7 @@
                                         <th colspan="6"
                                             style="font-weight: normal;">
                                             <span style="margin-left: 8%;">
-                                                <t t-esc="datas['name']"/>
+                                                <t t-out="datas['name']"/>
                                             </span>
                                         </th>
                                         <!-- Assuming you want to iterate over all values to display -->
@@ -94,7 +94,7 @@
                                                     <th class="text-end"
                                                         style="font-weight: normal;">
                                                         <span>
-                                                            <t t-esc="account['amount']"/>
+                                                            <t t-out="account['amount']"/>
                                                         </span>
                                                     </th>
                                                 </t>
@@ -113,7 +113,7 @@
                                     <th class="text-end"
                                         style="font-weight: normal;">
                                         <span>
-                                            <t t-esc="datas['asset_receivable'][1]"/>
+                                            <t t-out="datas['asset_receivable'][1]"/>
                                         </span>
                                     </th>
                                 </t>
@@ -151,13 +151,13 @@
                                                             <th colspan="6"
                                                                 style="font-weight: normal;">
                                                                 <span style="margin-left: 8%;">
-                                                                    <t t-esc="datas['name']"/>
+                                                                    <t t-out="datas['name']"/>
                                                                 </span>
                                                             </th>
                                                             <th class="text-end"
                                                                 style="font-weight: normal;">
                                                                 <span>
-                                                                    <t t-esc="datas['amount']"/>
+                                                                    <t t-out="datas['amount']"/>
                                                                 </span>
                                                             </th>
                                                         </t>
@@ -179,7 +179,7 @@
                                     <th class="text-end"
                                         style="font-weight: normal;">
                                         <span>
-                                            <t t-esc="datas['asset_current'][1]"/>
+                                            <t t-out="datas['asset_current'][1]"/>
                                         </span>
                                     </th>
                                 </t>
@@ -217,13 +217,13 @@
                                                             <th colspan="6"
                                                                 style="font-weight: normal;">
                                                                 <span style="margin-left: 8%;">
-                                                                    <t t-esc="datas['name']"/>
+                                                                    <t t-out="datas['name']"/>
                                                                 </span>
                                                             </th>
                                                             <th class="text-end"
                                                                 style="font-weight: normal;">
                                                                 <span>
-                                                                    <t t-esc="datas['amount']"/>
+                                                                    <t t-out="datas['amount']"/>
                                                                 </span>
                                                             </th>
                                                         </t>
@@ -244,7 +244,7 @@
                                     <th class="text-end"
                                         style="font-weight: normal;">
                                         <span>
-                                            <t t-esc="datas['asset_prepayments'][1]"/>
+                                            <t t-out="datas['asset_prepayments'][1]"/>
                                         </span>
                                     </th>
                                 </t>
@@ -282,13 +282,13 @@
                                                             <th colspan="6"
                                                                 style="font-weight: normal;">
                                                                 <span style="margin-left: 8%;">
-                                                                    <t t-esc="datas['name']"/>
+                                                                    <t t-out="datas['name']"/>
                                                                 </span>
                                                             </th>
                                                             <th class="text-end"
                                                                 style="font-weight: normal;">
                                                                 <span>
-                                                                    <t t-esc="datas['amount']"/>
+                                                                    <t t-out="datas['amount']"/>
                                                                 </span>
                                                             </th>
                                                         </t>
@@ -309,7 +309,7 @@
                                    t-key="datas_index">
                                     <th class="text-end">
                                         <span style="font-weight: bolder; margin-left: 4%;">
-                                            <t t-esc="datas['total_current_asset']"/>
+                                            <t t-out="datas['total_current_asset']"/>
                                         </span>
                                     </th>
                                 </t>
@@ -325,7 +325,7 @@
                                     <th class="text-end"
                                         style="font-weight: normal;">
                                         <span>
-                                            <t t-esc="datas['asset_fixed'][1]"/>
+                                            <t t-out="datas['asset_fixed'][1]"/>
                                         </span>
                                     </th>
                                 </t>
@@ -363,13 +363,13 @@
                                                             <th colspan="6"
                                                                 style="font-weight: normal;">
                                                                 <span style="margin-left: 8%;">
-                                                                    <t t-esc="datas['name']"/>
+                                                                    <t t-out="datas['name']"/>
                                                                 </span>
                                                             </th>
                                                             <th class="text-end"
                                                                 style="font-weight: normal;">
                                                                 <span>
-                                                                    <t t-esc="datas['amount']"/>
+                                                                    <t t-out="datas['amount']"/>
                                                                 </span>
                                                             </th>
                                                         </t>
@@ -391,7 +391,7 @@
                                     <th class="text-end"
                                         style="font-weight: normal;">
                                         <span>
-                                            <t t-esc="datas['asset_non_current'][1]"/>
+                                            <t t-out="datas['asset_non_current'][1]"/>
                                         </span>
                                     </th>
                                 </t>
@@ -429,13 +429,13 @@
                                                             <th colspan="6"
                                                                 style="font-weight: normal;">
                                                                 <span style="margin-left: 8%;">
-                                                                    <t t-esc="datas['name']"/>
+                                                                    <t t-out="datas['name']"/>
                                                                 </span>
                                                             </th>
                                                             <th class="text-end"
                                                                 style="font-weight: normal;">
                                                                 <span>
-                                                                    <t t-esc="datas['amount']"/>
+                                                                    <t t-out="datas['amount']"/>
                                                                 </span>
                                                             </th>
                                                         </t>
@@ -456,7 +456,7 @@
                                    t-key="datas_index">
                                     <th class="text-end">
                                         <span style="font-weight: bolder; margin-left: 4%;">
-                                            <t t-esc="datas['total_assets']"/>
+                                            <t t-out="datas['total_assets']"/>
                                         </span>
                                     </th>
                                 </t>
@@ -488,7 +488,7 @@
                                     <th class="text-end"
                                         style="font-weight: normal;">
                                         <span>
-                                            <t t-esc="datas['liability_current'][1]"/>
+                                            <t t-out="datas['liability_current'][1]"/>
                                         </span>
                                     </th>
                                 </t>
@@ -526,13 +526,13 @@
                                                             <th colspan="6"
                                                                 style="font-weight: normal;">
                                                                 <span style="margin-left: 8%;">
-                                                                    <t t-esc="datas['name']"/>
+                                                                    <t t-out="datas['name']"/>
                                                                 </span>
                                                             </th>
                                                             <th class="text-end"
                                                                 style="font-weight: normal;">
                                                                 <span>
-                                                                    <t t-esc="datas['amount']"/>
+                                                                    <t t-out="datas['amount']"/>
                                                                 </span>
                                                             </th>
                                                         </t>
@@ -553,7 +553,7 @@
                                     <th class="text-end"
                                         style="font-weight: normal;">
                                         <span>
-                                            <t t-esc="datas['liability_payable'][1]"/>
+                                            <t t-out="datas['liability_payable'][1]"/>
                                         </span>
                                     </th>
                                 </t>
@@ -591,13 +591,13 @@
                                                             <th colspan="6"
                                                                 style="font-weight: normal;">
                                                                 <span style="margin-left: 8%;">
-                                                                    <t t-esc="datas['name']"/>
+                                                                    <t t-out="datas['name']"/>
                                                                 </span>
                                                             </th>
                                                             <th class="text-end"
                                                                 style="font-weight: normal;">
                                                                 <span>
-                                                                    <t t-esc="datas['amount']"/>
+                                                                    <t t-out="datas['amount']"/>
                                                                 </span>
                                                             </th>
                                                         </t>
@@ -618,7 +618,7 @@
                                    t-key="datas_index">
                                     <th class="text-end">
                                         <span style="font-weight: bolder; margin-left: 4%;">
-                                            <t t-esc="datas['total_current_liability']"/>
+                                            <t t-out="datas['total_current_liability']"/>
                                         </span>
                                     </th>
                                 </t>
@@ -634,7 +634,7 @@
                                     <th class="text-end"
                                         style="font-weight: normal;">
                                         <span>
-                                            <t t-esc="datas['liability_non_current'][1]"/>
+                                            <t t-out="datas['liability_non_current'][1]"/>
                                         </span>
                                     </th>
                                 </t>
@@ -672,13 +672,13 @@
                                                             <th colspan="6"
                                                                 style="font-weight: normal;">
                                                                 <span style="margin-left: 8%;">
-                                                                    <t t-esc="datas['name']"/>
+                                                                    <t t-out="datas['name']"/>
                                                                 </span>
                                                             </th>
                                                             <th class="text-end"
                                                                 style="font-weight: normal;">
                                                                 <span>
-                                                                    <t t-esc="datas['amount']"/>
+                                                                    <t t-out="datas['amount']"/>
                                                                 </span>
                                                             </th>
                                                         </t>
@@ -699,7 +699,7 @@
                                    t-key="datas_index">
                                     <th class="text-end">
                                         <span style="font-weight: bolder; margin-left: 4%;">
-                                            <t t-esc="datas['total_liability']"/>
+                                            <t t-out="datas['total_liability']"/>
                                         </span>
                                     </th>
                                 </t>
@@ -731,7 +731,7 @@
                                     <th class="text-end"
                                         style="font-weight: normal;">
                                         <span>
-                                            <t t-esc="datas['total_earnings']"/>
+                                            <t t-out="datas['total_earnings']"/>
                                         </span>
                                     </th>
                                 </t>
@@ -747,7 +747,7 @@
                                     <th class="text-end"
                                         style="font-weight: normal;">
                                         <span>
-                                            <t t-esc="datas['equity_unaffected'][1]"/>
+                                            <t t-out="datas['equity_unaffected'][1]"/>
                                         </span>
                                     </th>
                                 </t>
@@ -785,13 +785,13 @@
                                                             <th colspan="6"
                                                                 style="font-weight: normal;">
                                                                 <span style="margin-left: 8%;">
-                                                                    <t t-esc="datas['name']"/>
+                                                                    <t t-out="datas['name']"/>
                                                                 </span>
                                                             </th>
                                                             <th class="text-end"
                                                                 style="font-weight: normal;">
                                                                 <span>
-                                                                    <t t-esc="datas['amount']"/>
+                                                                    <t t-out="datas['amount']"/>
                                                                 </span>
                                                             </th>
                                                         </t>
@@ -812,7 +812,7 @@
                                    t-key="datas_index">
                                     <th class="text-end">
                                         <span style="font-weight: bolder; margin-left: 4%;">
-                                            <t t-esc="datas['total_unallocated_earning']"/>
+                                            <t t-out="datas['total_unallocated_earning']"/>
                                         </span>
                                     </th>
                                 </t>
@@ -828,7 +828,7 @@
                                     <th class="text-end"
                                         style="font-weight: normal;">
                                         <span>
-                                            <t t-esc="datas['equity'][1]"/>
+                                            <t t-out="datas['equity'][1]"/>
                                         </span>
                                     </th>
                                 </t>
@@ -866,13 +866,13 @@
                                                             <th colspan="6"
                                                                 style="font-weight: normal;">
                                                                 <span style="margin-left: 8%;">
-                                                                    <t t-esc="datas['name']"/>
+                                                                    <t t-out="datas['name']"/>
                                                                 </span>
                                                             </th>
                                                             <th class="text-end"
                                                                 style="font-weight: normal;">
                                                                 <span>
-                                                                    <t t-esc="datas['amount']"/>
+                                                                    <t t-out="datas['amount']"/>
                                                                 </span>
                                                             </th>
                                                         </t>
@@ -893,7 +893,7 @@
                                    t-key="datas_index">
                                     <th class="text-end">
                                         <span style="font-weight: bolder; margin-left: 4%;">
-                                            <t t-esc="datas['total_equity']"/>
+                                            <t t-out="datas['total_equity']"/>
                                         </span>
                                     </th>
                                 </t>
@@ -908,7 +908,7 @@
                                    t-key="datas_index">
                                     <th class="text-end">
                                         <span style="font-weight: bolder; margin-left: 4%;">
-                                            <t t-esc="datas['total_balance']"/>
+                                            <t t-out="datas['total_balance']"/>
                                         </span>
                                     </th>
                                 </t>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <templates>
     <!-- The gl_template_new template for the GeneralLedger component. -->
-    <t t-name="gl_template_new" owl="1">
+    <t t-name="gl_template_new">
         <div class="container">
             <div class="fin_report">
                 <div class="filter_view_gl pt-3 pb-5">
@@ -409,15 +409,15 @@
                                         </th>
                                         <th class="o_heading" style="text-align:right;">
                                             <t t-esc="state.currency"/>
-                                            <t t-out="state.total_debit_display"/>
+                                            <t t-esc="state.total_debit_display"/>
                                         </th>
                                         <th class="o_heading" style="text-align:right;">
                                             <t t-esc="state.currency"/>
-                                            <t t-out="state.total_credit_display"/>
+                                            <t t-esc="state.total_credit_display"/>
                                         </th>
                                         <th class="o_heading" style="text-align:right;">
                                             <t t-esc="state.currency"/>
-                                            <t t-out="(state.total_debit - state.total_credit).toFixed(2)"/>
+                                            <t t-esc="(state.total_debit - state.total_credit).toFixed(2)"/>
                                         </th>
                                     </tr>
                                 </tbody>

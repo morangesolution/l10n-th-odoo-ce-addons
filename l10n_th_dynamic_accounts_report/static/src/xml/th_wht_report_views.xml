@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <templates>
-    <t t-name="th_wht_r_template" owl="1">
+    <t t-name="th_wht_r_template">
         <div class="container">
             <div class="fin_report">
                 <div class="filter_view_gl pt-3 pb-5">

@@ -11,7 +11,7 @@
                     <h3>
                         <center>
                             <b>
-                                <span t-esc="report_name"/>
+                                <span t-out="report_name"/>
                             </b>
                         </center>
                     </h3>
@@ -98,7 +98,7 @@
                                                     <t t-if="partner != 'false'">
                                                         <strong>
                                                             <b>
-                                                                <t t-esc="partner"/>
+                                                                <t t-out="partner"/>
                                                             </b>
                                                         </strong>
                                                     </t>
@@ -116,9 +116,9 @@
                                             <strong>
                                                 <span>
                                                     <t t-if="total[partner]['total_debit']"
-                                                       t-esc="total[partner]['currency_id']"/>
+                                                       t-out="total[partner]['currency_id']"/>
                                                     <t t-if="total[partner]['total_debit']"
-                                                       t-esc="total[partner]['total_debit_display']"/>
+                                                       t-out="total[partner]['total_debit_display']"/>
                                                 </span>
                                             </strong>
                                         </th>
@@ -126,9 +126,9 @@
                                             <strong>
                                                 <span>
                                                     <t t-if="total[partner]['total_credit']"
-                                                       t-esc="total[partner]['currency_id']"/>
+                                                       t-out="total[partner]['currency_id']"/>
                                                     <t t-if="total[partner]['total_credit']"
-                                                       t-esc="total[partner]['total_credit_display']"/>
+                                                       t-out="total[partner]['total_credit_display']"/>
                                                 </span>
                                             </strong>
                                         </th>
@@ -136,8 +136,8 @@
                                         <th style="width:10% border:0px solid transparent;border-right: thin solid #dee2e6;">
                                             <strong>
                                                 <span class="fw-bolder">
-                                                    <t t-esc="total[partner]['currency_id']"/>
-                                                    <t t-esc="total[partner]['total_debit'] - total[partner]['total_credit']"/>
+                                                    <t t-out="total[partner]['currency_id']"/>
+                                                    <t t-out="total[partner]['total_debit'] - total[partner]['total_credit']"/>
                                                 </span>
                                             </strong>
                                         </th>
@@ -160,7 +160,7 @@
                                             </th>
                                             <th>
                                                 <span>
-                                                    <t t-esc="total[partner]['move_name']"/>
+                                                    <t t-out="total[partner]['move_name']"/>
                                                 </span>
                                             </th>
                                             <th>
@@ -169,18 +169,18 @@
                                             </th>
                                             <th>
                                                 <span>
-                                                    <t t-esc="total[partner]['initial_debit']"/>
+                                                    <t t-out="total[partner]['initial_debit']"/>
                                                 </span>
                                             </th>
                                             <th>
                                                 <span>
-                                                    <t t-esc="total[partner]['initial_credit']"/>
+                                                    <t t-out="total[partner]['initial_credit']"/>
                                                 </span>
                                             </th>
                                             <th/>
                                             <th>
                                                 <span>
-                                                    <t t-esc="total[partner]['initial_balance']"/>
+                                                    <t t-out="total[partner]['initial_balance']"/>
                                                 </span>
                                             </th>
                                         </t>
@@ -192,59 +192,59 @@
                                         <tr class="border-bottom">
                                             <th colspan="6" style="width:10%">
                                                 <span>
-                                                    <t t-esc="valuelist[0]['date']"/>
+                                                    <t t-out="valuelist[0]['date']"/>
                                                 </span>
                                             </th>
                                             <th style="width:10%">
                                                 <span>
-                                                    <t t-esc="valuelist[0]['jrnl']"/>
+                                                    <t t-out="valuelist[0]['jrnl']"/>
                                                 </span>
                                             </th>
                                             <th style="width:10%">
                                                 <span>
-                                                    <t t-esc="valuelist[0]['code']"/>
+                                                    <t t-out="valuelist[0]['code']"/>
                                                 </span>
                                             </th>
                                             <th style="width:10%">
                                                 <span>
                                                     <t t-if="valuelist[0]['move_name']"
-                                                       t-esc="valuelist[0]['move_name']"/>
+                                                       t-out="valuelist[0]['move_name']"/>
                                                 </span>
                                             </th>
                                             <th style="width:10%">
                                                 <span>
                                                     <t t-if="valuelist[0]['date_maturity']"
-                                                       t-esc="valuelist[0]['date_maturity']"/>
+                                                       t-out="valuelist[0]['date_maturity']"/>
                                                 </span>
                                             </th>
                                             <th style="width:10%">
                                                 <span>
                                                     <t t-if="valuelist[0]['matching_number']"
-                                                       t-esc="valuelist[0]['matching_number']"/>
+                                                       t-out="valuelist[0]['matching_number']"/>
                                                 </span>
                                             </th>
                                             <th style="width:10%">
                                                 <span>
                                                     <t t-if="valuelist[0]['debit']"
-                                                       t-esc="total[partner]['currency_id']"/>
+                                                       t-out="total[partner]['currency_id']"/>
                                                     <t t-if="valuelist[0]['debit']"
-                                                       t-esc="valuelist[0]['debit_display']"/>
+                                                       t-out="valuelist[0]['debit_display']"/>
                                                 </span>
                                             </th>
                                             <th style="width:10%">
                                                 <span>
                                                     <t t-if="valuelist[0]['credit']"
-                                                       t-esc="total[partner]['currency_id']"/>
+                                                       t-out="total[partner]['currency_id']"/>
                                                     <t t-if="valuelist[0]['credit']"
-                                                       t-esc="valuelist[0]['credit_display']"/>
+                                                       t-out="valuelist[0]['credit_display']"/>
                                                 </span>
                                             </th>
                                             <th style="width:10%">
                                                 <span>
                                                     <t t-if="valuelist[0]['amount_currency']"
-                                                       t-esc="total[partner]['currency_id']"/>
+                                                       t-out="total[partner]['currency_id']"/>
                                                     <t t-if="valuelist[0]['amount_currency']"
-                                                       t-esc="valuelist[0]['amount_currency_display']"/>
+                                                       t-out="valuelist[0]['amount_currency_display']"/>
                                                 </span>
                                             </th>
                                             <th style="width:10%"/>
